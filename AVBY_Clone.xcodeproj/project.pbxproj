@@ -20,6 +20,7 @@
 		2DE889582B1CAC32005A3A2A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DE889562B1CAC32005A3A2A /* LaunchScreen.storyboard */; };
 		2DEF8EE92B23121F002D7691 /* Extention + NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEF8EE82B23121F002D7691 /* Extention + NavigationController.swift */; };
 		2DEF8EEC2B232362002D7691 /* CarsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEF8EEB2B232362002D7691 /* CarsTableViewCell.swift */; };
+		2DEF8EEE2B233795002D7691 /* Extention + UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEF8EED2B233795002D7691 /* Extention + UIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		2DE889592B1CAC32005A3A2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DEF8EE82B23121F002D7691 /* Extention + NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extention + NavigationController.swift"; sourceTree = "<group>"; };
 		2DEF8EEB2B232362002D7691 /* CarsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsTableViewCell.swift; sourceTree = "<group>"; };
+		2DEF8EED2B233795002D7691 /* Extention + UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extention + UIView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				2DEF8EE82B23121F002D7691 /* Extention + NavigationController.swift */,
+				2DEF8EED2B233795002D7691 /* Extention + UIView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 				2D98A9F42B1F33710024B0B4 /* DialoguesViewController.swift in Sources */,
 				2D98A9ED2B1F2FC20024B0B4 /* TabBarController.swift in Sources */,
 				2D98A9F12B1F33230024B0B4 /* AdvertisementsViewController.swift in Sources */,
+				2DEF8EEE2B233795002D7691 /* Extention + UIView.swift in Sources */,
 				2DE8894C2B1CAC31005A3A2A /* AppDelegate.swift in Sources */,
 				2DEF8EEC2B232362002D7691 /* CarsTableViewCell.swift in Sources */,
 				2D98A9F62B1F339A0024B0B4 /* OtherViewController.swift in Sources */,

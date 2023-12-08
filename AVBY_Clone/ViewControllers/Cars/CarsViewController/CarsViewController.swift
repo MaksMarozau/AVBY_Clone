@@ -54,7 +54,7 @@ final class CarsViewController: UIViewController {
     private func configureUI() {
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
-        tableView.rowHeight = view.frame.height * 0.55
+        tableView.rowHeight = UITableView.automaticDimension
     }
 }
 
@@ -66,7 +66,7 @@ extension CarsViewController: UITableViewDelegate, UITableViewDataSource {
     
     //Number of rows in a section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        return 10
     }
     
     
@@ -77,6 +77,8 @@ extension CarsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.backgroundColor = .clear
         
         return cell
+        
+      
     }
 }
 

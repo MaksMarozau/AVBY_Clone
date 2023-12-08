@@ -47,12 +47,12 @@ final class CarsTableViewCell: UITableViewCell {
         addViews()
         constraintes()
         
-        setupFlowLayout()
+//        setupFlowLayout()
         //        imageCollectionView.register(MainPageCollectionViewCell.self, forCellWithReuseIdentifier: "MainPageCollectionViewCell")
         //        imageCollectionView.delegate = self
         //        imageCollectionView.dataSource = self
         
-        configureUI()
+//        configureUI()
 //        targetts()
     }
     
@@ -69,26 +69,15 @@ final class CarsTableViewCell: UITableViewCell {
         
         contentView.addSubview(globalView)
         
-        globalView.addSubview(nameView)
-        globalView.addSubview(priceView)
-        globalView.addSubview(imageCollectionView)
-        globalView.addSubview(descriptionView)
-        globalView.addSubview(creditView)
+        globalView.addSubviews(views: nameView, priceView, imageCollectionView, descriptionView, creditView)
         
-        nameView.addSubview(nameCarLable)
-        nameView.addSubview(hideButton)
-        nameView.addSubview(markButton)
+        nameView.addSubviews(views: nameCarLable, hideButton, markButton)
         
-        priceView.addSubview(priceLable)
-        priceView.addSubview(postfixLable)
-        priceView.addSubview(convertPriceLable)
+        priceView.addSubviews(views: priceLable, postfixLable, convertPriceLable)
         
-        descriptionView.addSubview(descriptionLable)
-        descriptionView.addSubview(dateLable)
+        descriptionView.addSubviews(views: descriptionLable, dateLable)
         
-        creditView.addSubview(sepparator)
-        creditView.addSubview(leasingButton)
-        creditView.addSubview(mounthlySumLabel)
+        creditView.addSubviews(views: sepparator, leasingButton, mounthlySumLabel)
     }
     
     
@@ -103,6 +92,7 @@ final class CarsTableViewCell: UITableViewCell {
         globalView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
         globalView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         globalView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        globalView.backgroundColor = .black
         
         
         //for container subViews
@@ -110,7 +100,8 @@ final class CarsTableViewCell: UITableViewCell {
         nameView.topAnchor.constraint(equalTo: globalView.topAnchor, constant: 10).isActive = true
         nameView.leadingAnchor.constraint(equalTo: globalView.leadingAnchor, constant: 10).isActive = true
         nameView.trailingAnchor.constraint(equalTo: globalView.trailingAnchor, constant: -10).isActive = true
-        nameView.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        nameView.heightAnchor.constraint(greaterThanOrEqualToConstant: 25).isActive = true
+        nameView.backgroundColor = .white
         
         
         priceView.translatesAutoresizingMaskIntoConstraints = false
@@ -119,28 +110,32 @@ final class CarsTableViewCell: UITableViewCell {
         priceView.trailingAnchor.constraint(equalTo: globalView.trailingAnchor, constant: -10).isActive = true
         priceView.heightAnchor.constraint(equalToConstant: 40).isActive = true
         priceView.widthAnchor.constraint(equalTo: globalView.widthAnchor, multiplier: 0.55).isActive = true
-        
-        
+        priceView.backgroundColor = .white
+
+
         imageCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        imageCollectionView.topAnchor.constraint(equalTo: priceView.bottomAnchor, constant: 10).isActive = true
+        imageCollectionView.topAnchor.constraint(equalTo: priceView.bottomAnchor, constant: 5).isActive = true
         imageCollectionView.leadingAnchor.constraint(equalTo: globalView.leadingAnchor, constant: 10).isActive = true
         imageCollectionView.trailingAnchor.constraint(equalTo: globalView.trailingAnchor, constant: 0).isActive = true
-        imageCollectionView.bottomAnchor.constraint(equalTo: descriptionView.topAnchor, constant: -10).isActive = true
-        
+        imageCollectionView.heightAnchor.constraint(equalToConstant: 261).isActive = true
+
         
         descriptionView.translatesAutoresizingMaskIntoConstraints = false
-        descriptionView.bottomAnchor.constraint(equalTo: creditView.topAnchor, constant: -10).isActive = true
+        descriptionView.topAnchor.constraint(equalTo: imageCollectionView.bottomAnchor, constant: 5).isActive = true
         descriptionView.leadingAnchor.constraint(equalTo: globalView.leadingAnchor, constant: 10).isActive = true
         descriptionView.trailingAnchor.constraint(equalTo: globalView.trailingAnchor, constant: -10).isActive = true
         descriptionView.heightAnchor.constraint(equalToConstant: 65).isActive = true
-        
+        descriptionView.backgroundColor = .white
+
         
         creditView.translatesAutoresizingMaskIntoConstraints = false
+        creditView.topAnchor.constraint(equalTo: descriptionView.bottomAnchor, constant: 5).isActive = true
         creditView.bottomAnchor.constraint(equalTo: globalView.bottomAnchor, constant: -10).isActive = true
         creditView.leadingAnchor.constraint(equalTo: globalView.leadingAnchor, constant: 10).isActive = true
         creditView.trailingAnchor.constraint(equalTo: globalView.trailingAnchor, constant: -10).isActive = true
         creditView.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        
+        creditView.backgroundColor = .white
+
         
         //Constraintes for nameView subViews
         markButton.translatesAutoresizingMaskIntoConstraints = false
@@ -156,62 +151,66 @@ final class CarsTableViewCell: UITableViewCell {
         
         
         nameCarLable.translatesAutoresizingMaskIntoConstraints = false
-        nameCarLable.heightAnchor.constraint(equalTo: nameView.heightAnchor, multiplier: 1).isActive = true
-        nameCarLable.leadingAnchor.constraint(equalTo: nameView.leadingAnchor, constant: 0).isActive = true
-        nameCarLable.trailingAnchor.constraint(equalTo: hideButton.leadingAnchor, constant: 0).isActive = true
-        
-        
-        //Constraintes for priceView subViews
-        priceLable.translatesAutoresizingMaskIntoConstraints = false
-        priceLable.leadingAnchor.constraint(equalTo: priceView.leadingAnchor, constant: 0).isActive = true
-        priceLable.heightAnchor.constraint(equalTo: priceView.heightAnchor, multiplier: 1).isActive = true
-        priceLable.widthAnchor.constraint(equalTo: priceView.widthAnchor, multiplier: 0.52).isActive = true
-        
-        
-        postfixLable.translatesAutoresizingMaskIntoConstraints = false
-        postfixLable.leadingAnchor.constraint(equalTo: priceLable.trailingAnchor, constant: 0).isActive = true
-        postfixLable.heightAnchor.constraint(equalTo: priceView.heightAnchor, multiplier: 1).isActive = true
-        postfixLable.widthAnchor.constraint(equalTo: priceView.widthAnchor, multiplier: 0.1).isActive = true
-        
-        
-        convertPriceLable.translatesAutoresizingMaskIntoConstraints = false
-        convertPriceLable.leadingAnchor.constraint(equalTo: postfixLable.trailingAnchor, constant: 0).isActive = true
-        convertPriceLable.heightAnchor.constraint(equalTo: priceView.heightAnchor, multiplier: 1).isActive = true
-        
-        
-        //Constraintes for apierenceView subViews
-        descriptionLable.translatesAutoresizingMaskIntoConstraints = false
-        descriptionLable.topAnchor.constraint(equalTo: descriptionView.topAnchor, constant: 0).isActive = true
-        descriptionLable.widthAnchor.constraint(equalTo: descriptionView.widthAnchor, multiplier: 1).isActive = true
-        descriptionLable.heightAnchor.constraint(equalTo: descriptionView.heightAnchor, multiplier: 0.5).isActive = true
-        
-        
-        dateLable.translatesAutoresizingMaskIntoConstraints = false
-        dateLable.topAnchor.constraint(equalTo: descriptionLable.bottomAnchor, constant: 0).isActive = true
-        dateLable.widthAnchor.constraint(equalTo: descriptionView.widthAnchor, multiplier: 1).isActive = true
-        dateLable.heightAnchor.constraint(equalTo: descriptionView.heightAnchor, multiplier: 0.5).isActive = true
-        
-        
-        //Constraintes for creditView subViews
-        sepparator.translatesAutoresizingMaskIntoConstraints = false
-        sepparator.topAnchor.constraint(equalTo: creditView.topAnchor, constant: 0).isActive = true
-        sepparator.leadingAnchor.constraint(equalTo: creditView.leadingAnchor, constant: 10).isActive = true
-        sepparator.trailingAnchor.constraint(equalTo: creditView.trailingAnchor, constant: 0).isActive = true
-        sepparator.heightAnchor.constraint(equalToConstant: 2).isActive = true
-        
-        
-        leasingButton.translatesAutoresizingMaskIntoConstraints = false
-        leasingButton.topAnchor.constraint(equalTo: sepparator.bottomAnchor, constant: 0).isActive = true
-        leasingButton.bottomAnchor.constraint(equalTo: creditView.bottomAnchor, constant: 0).isActive = true
-        leasingButton.leadingAnchor.constraint(equalTo: creditView.leadingAnchor, constant: 0).isActive = true
-        leasingButton.widthAnchor.constraint(equalTo: creditView.widthAnchor, multiplier: 0.25).isActive = true
-        
-        
-        mounthlySumLabel.translatesAutoresizingMaskIntoConstraints = false
-        mounthlySumLabel.topAnchor.constraint(equalTo: sepparator.bottomAnchor, constant: 0).isActive = true
-        mounthlySumLabel.bottomAnchor.constraint(equalTo: creditView.bottomAnchor, constant: 0).isActive = true
-        mounthlySumLabel.trailingAnchor.constraint(equalTo: creditView.trailingAnchor, constant: 0).isActive = true
-        mounthlySumLabel.widthAnchor.constraint(equalTo: creditView.widthAnchor, multiplier: 0.35).isActive = true
+        nameCarLable.topAnchor.constraint(equalTo: nameView.topAnchor).isActive = true
+        nameCarLable.bottomAnchor.constraint(equalTo: nameView.bottomAnchor).isActive = true
+        nameCarLable.leadingAnchor.constraint(equalTo: nameView.leadingAnchor).isActive = true
+        nameCarLable.trailingAnchor.constraint(equalTo: hideButton.leadingAnchor).isActive = true
+        nameCarLable.numberOfLines = 0
+        nameCarLable.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
+        nameCarLable.text = "fkgdgldfgsdfsd"
+//        
+//        
+//        //Constraintes for priceView subViews
+//        priceLable.translatesAutoresizingMaskIntoConstraints = false
+//        priceLable.leadingAnchor.constraint(equalTo: priceView.leadingAnchor, constant: 0).isActive = true
+//        priceLable.heightAnchor.constraint(equalTo: priceView.heightAnchor, multiplier: 1).isActive = true
+//        priceLable.widthAnchor.constraint(equalTo: priceView.widthAnchor, multiplier: 0.52).isActive = true
+//        
+//        
+//        postfixLable.translatesAutoresizingMaskIntoConstraints = false
+//        postfixLable.leadingAnchor.constraint(equalTo: priceLable.trailingAnchor, constant: 0).isActive = true
+//        postfixLable.heightAnchor.constraint(equalTo: priceView.heightAnchor, multiplier: 1).isActive = true
+//        postfixLable.widthAnchor.constraint(equalTo: priceView.widthAnchor, multiplier: 0.1).isActive = true
+//        
+//        
+//        convertPriceLable.translatesAutoresizingMaskIntoConstraints = false
+//        convertPriceLable.leadingAnchor.constraint(equalTo: postfixLable.trailingAnchor, constant: 0).isActive = true
+//        convertPriceLable.heightAnchor.constraint(equalTo: priceView.heightAnchor, multiplier: 1).isActive = true
+//        
+//        
+//        //Constraintes for descriptionView subViews
+//        descriptionLable.translatesAutoresizingMaskIntoConstraints = false
+//        descriptionLable.topAnchor.constraint(equalTo: descriptionView.topAnchor, constant: 0).isActive = true
+//        descriptionLable.widthAnchor.constraint(equalTo: descriptionView.widthAnchor, multiplier: 1).isActive = true
+//        descriptionLable.heightAnchor.constraint(equalTo: descriptionView.heightAnchor, multiplier: 0.5).isActive = true
+//        
+//        
+//        dateLable.translatesAutoresizingMaskIntoConstraints = false
+//        dateLable.topAnchor.constraint(equalTo: descriptionLable.bottomAnchor, constant: 0).isActive = true
+//        dateLable.widthAnchor.constraint(equalTo: descriptionView.widthAnchor, multiplier: 1).isActive = true
+//        dateLable.heightAnchor.constraint(equalTo: descriptionView.heightAnchor, multiplier: 0.5).isActive = true
+//        
+//        
+//        //Constraintes for creditView subViews
+//        sepparator.translatesAutoresizingMaskIntoConstraints = false
+//        sepparator.topAnchor.constraint(equalTo: creditView.topAnchor, constant: 0).isActive = true
+//        sepparator.leadingAnchor.constraint(equalTo: creditView.leadingAnchor, constant: 10).isActive = true
+//        sepparator.trailingAnchor.constraint(equalTo: creditView.trailingAnchor, constant: 0).isActive = true
+//        sepparator.heightAnchor.constraint(equalToConstant: 2).isActive = true
+//        
+//        
+//        leasingButton.translatesAutoresizingMaskIntoConstraints = false
+//        leasingButton.topAnchor.constraint(equalTo: sepparator.bottomAnchor, constant: 0).isActive = true
+//        leasingButton.bottomAnchor.constraint(equalTo: creditView.bottomAnchor, constant: 0).isActive = true
+//        leasingButton.leadingAnchor.constraint(equalTo: creditView.leadingAnchor, constant: 0).isActive = true
+//        leasingButton.widthAnchor.constraint(equalTo: creditView.widthAnchor, multiplier: 0.25).isActive = true
+//        
+//        
+//        mounthlySumLabel.translatesAutoresizingMaskIntoConstraints = false
+//        mounthlySumLabel.topAnchor.constraint(equalTo: sepparator.bottomAnchor, constant: 0).isActive = true
+//        mounthlySumLabel.bottomAnchor.constraint(equalTo: creditView.bottomAnchor, constant: 0).isActive = true
+//        mounthlySumLabel.trailingAnchor.constraint(equalTo: creditView.trailingAnchor, constant: 0).isActive = true
+//        mounthlySumLabel.widthAnchor.constraint(equalTo: creditView.widthAnchor, multiplier: 0.35).isActive = true
     }
     
     
