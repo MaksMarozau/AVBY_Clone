@@ -12,13 +12,13 @@
 		2D98A9F12B1F33230024B0B4 /* AdvertisementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D98A9F02B1F33230024B0B4 /* AdvertisementsViewController.swift */; };
 		2D98A9F42B1F33710024B0B4 /* DialoguesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D98A9F32B1F33710024B0B4 /* DialoguesViewController.swift */; };
 		2D98A9F62B1F339A0024B0B4 /* OtherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D98A9F52B1F339A0024B0B4 /* OtherViewController.swift */; };
-		2D98A9F92B1F35780024B0B4 /* CarsNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D98A9F82B1F35780024B0B4 /* CarsNavigationController.swift */; };
 		2D98AA002B208D730024B0B4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D98A9FF2B208D730024B0B4 /* ViewController.swift */; };
 		2DE8894C2B1CAC31005A3A2A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE8894B2B1CAC31005A3A2A /* AppDelegate.swift */; };
 		2DE8894E2B1CAC31005A3A2A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE8894D2B1CAC31005A3A2A /* SceneDelegate.swift */; };
 		2DE889502B1CAC31005A3A2A /* CarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE8894F2B1CAC31005A3A2A /* CarsViewController.swift */; };
 		2DE889552B1CAC32005A3A2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DE889542B1CAC32005A3A2A /* Assets.xcassets */; };
 		2DE889582B1CAC32005A3A2A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DE889562B1CAC32005A3A2A /* LaunchScreen.storyboard */; };
+		2DEF8EE92B23121F002D7691 /* Extention + NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEF8EE82B23121F002D7691 /* Extention + NavigationController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +27,6 @@
 		2D98A9F02B1F33230024B0B4 /* AdvertisementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertisementsViewController.swift; sourceTree = "<group>"; };
 		2D98A9F32B1F33710024B0B4 /* DialoguesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialoguesViewController.swift; sourceTree = "<group>"; };
 		2D98A9F52B1F339A0024B0B4 /* OtherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherViewController.swift; sourceTree = "<group>"; };
-		2D98A9F82B1F35780024B0B4 /* CarsNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsNavigationController.swift; sourceTree = "<group>"; };
 		2D98A9FF2B208D730024B0B4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2DE889482B1CAC31005A3A2A /* AVBY_Clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AVBY_Clone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DE8894B2B1CAC31005A3A2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +35,7 @@
 		2DE889542B1CAC32005A3A2A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2DE889572B1CAC32005A3A2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DE889592B1CAC32005A3A2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2DEF8EE82B23121F002D7691 /* Extention + NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extention + NavigationController.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,10 +53,10 @@
 			isa = PBXGroup;
 			children = (
 				2D98A9FA2B1F35800024B0B4 /* Cars */,
-				2D98A9EE2B1F32E40024B0B4 /* FavoritesViewController.swift */,
-				2D98A9F02B1F33230024B0B4 /* AdvertisementsViewController.swift */,
-				2D98A9F32B1F33710024B0B4 /* DialoguesViewController.swift */,
-				2D98A9F52B1F339A0024B0B4 /* OtherViewController.swift */,
+				2DEF8EE42B231185002D7691 /* Favorites */,
+				2DEF8EE52B2311B0002D7691 /* Advertisements */,
+				2DEF8EE62B2311BF002D7691 /* Dialogues */,
+				2DEF8EE72B2311CD002D7691 /* Other */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -64,7 +64,6 @@
 		2D98A9FA2B1F35800024B0B4 /* Cars */ = {
 			isa = PBXGroup;
 			children = (
-				2D98A9F82B1F35780024B0B4 /* CarsNavigationController.swift */,
 				2DE8894F2B1CAC31005A3A2A /* CarsViewController.swift */,
 				2D98A9FF2B208D730024B0B4 /* ViewController.swift */,
 			);
@@ -90,15 +89,64 @@
 		2DE8894A2B1CAC31005A3A2A /* AVBY_Clone */ = {
 			isa = PBXGroup;
 			children = (
-				2DE8894B2B1CAC31005A3A2A /* AppDelegate.swift */,
-				2DE8894D2B1CAC31005A3A2A /* SceneDelegate.swift */,
 				2D98A9EC2B1F2FC20024B0B4 /* TabBarController.swift */,
 				2D98A9F72B1F33A80024B0B4 /* ViewControllers */,
-				2DE889542B1CAC32005A3A2A /* Assets.xcassets */,
-				2DE889562B1CAC32005A3A2A /* LaunchScreen.storyboard */,
+				2DEF8EE22B2310FD002D7691 /* Extensions */,
+				2DEF8EE32B231110002D7691 /* Supporting */,
 				2DE889592B1CAC32005A3A2A /* Info.plist */,
 			);
 			path = AVBY_Clone;
+			sourceTree = "<group>";
+		};
+		2DEF8EE22B2310FD002D7691 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2DEF8EE82B23121F002D7691 /* Extention + NavigationController.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		2DEF8EE32B231110002D7691 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				2DE8894B2B1CAC31005A3A2A /* AppDelegate.swift */,
+				2DE8894D2B1CAC31005A3A2A /* SceneDelegate.swift */,
+				2DE889542B1CAC32005A3A2A /* Assets.xcassets */,
+				2DE889562B1CAC32005A3A2A /* LaunchScreen.storyboard */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
+		2DEF8EE42B231185002D7691 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				2D98A9EE2B1F32E40024B0B4 /* FavoritesViewController.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		2DEF8EE52B2311B0002D7691 /* Advertisements */ = {
+			isa = PBXGroup;
+			children = (
+				2D98A9F02B1F33230024B0B4 /* AdvertisementsViewController.swift */,
+			);
+			path = Advertisements;
+			sourceTree = "<group>";
+		};
+		2DEF8EE62B2311BF002D7691 /* Dialogues */ = {
+			isa = PBXGroup;
+			children = (
+				2D98A9F32B1F33710024B0B4 /* DialoguesViewController.swift */,
+			);
+			path = Dialogues;
+			sourceTree = "<group>";
+		};
+		2DEF8EE72B2311CD002D7691 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				2D98A9F52B1F339A0024B0B4 /* OtherViewController.swift */,
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,10 +224,10 @@
 				2D98A9F42B1F33710024B0B4 /* DialoguesViewController.swift in Sources */,
 				2D98A9ED2B1F2FC20024B0B4 /* TabBarController.swift in Sources */,
 				2D98A9F12B1F33230024B0B4 /* AdvertisementsViewController.swift in Sources */,
-				2D98A9F92B1F35780024B0B4 /* CarsNavigationController.swift in Sources */,
 				2DE8894C2B1CAC31005A3A2A /* AppDelegate.swift in Sources */,
 				2D98A9F62B1F339A0024B0B4 /* OtherViewController.swift in Sources */,
 				2D98A9EF2B1F32E40024B0B4 /* FavoritesViewController.swift in Sources */,
+				2DEF8EE92B23121F002D7691 /* Extention + NavigationController.swift in Sources */,
 				2DE8894E2B1CAC31005A3A2A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

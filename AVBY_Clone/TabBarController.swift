@@ -32,9 +32,9 @@ class TabBarController: UITabBarController {
     private func configTabBarUI() {
         
         view.backgroundColor = .backgroundMain
-        tabBar.backgroundColor = .backgroundSub
-        tabBar.barTintColor = .itemSelected
-        tabBar.unselectedItemTintColor = .itemUnselected
+        UITabBar.appearance().backgroundColor = .backgroundSub
+        UITabBar.appearance().tintColor = .itemSelected
+        UITabBar.appearance().unselectedItemTintColor = .itemUnselected
     }
     
     
