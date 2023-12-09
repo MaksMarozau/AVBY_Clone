@@ -9,6 +9,7 @@ final class CarsViewController: UIViewController {
     
     private let tableView = UITableView()
     
+    var advertisementsArray = Advertisements()
     
     
 //MARK: - LifeCycles
