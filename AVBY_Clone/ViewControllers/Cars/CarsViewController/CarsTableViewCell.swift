@@ -5,7 +5,7 @@ import UIKit
 final class CarsTableViewCell: UITableViewCell {
     
     
-//MARK: - Properties
+    //MARK: - Properties
     
     //MARK: - Properties for UI creating
     
@@ -43,20 +43,22 @@ final class CarsTableViewCell: UITableViewCell {
     
     //imageCollectionView's layout
     private let layout = UICollectionViewFlowLayout()
-
-    
-//    var imageArray: [UIImage] = []
-//    var countOfView = 0
-//    
-//    
-//    weak var delegate: MainPageCustomeTableViewCellDelegate?
-//    
-//    var index = 0
     
     
+    //MARK: - Supporting properties
+    
+    var imageArray: [UIImage] = []
+    //    var countOfView = 0
+    //
+    //
+    //    weak var delegate: MainPageCustomeTableViewCellDelegate?
+    //
+    //    var index = 0
     
     
-//MARK: - Initializations for cell
+    
+    
+    //MARK: - Initializations for cell
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -70,7 +72,7 @@ final class CarsTableViewCell: UITableViewCell {
         //        imageCollectionView.dataSource = self
         
         configureUI()
-//        targetts()
+        //        targetts()
     }
     
     
@@ -80,7 +82,7 @@ final class CarsTableViewCell: UITableViewCell {
     
     
     
-//MARK: - Add views
+    //MARK: - Add views
     
     private func addViews() {
         
@@ -95,13 +97,13 @@ final class CarsTableViewCell: UITableViewCell {
         descriptionStackView.addArrangedSubviews(views: descriptionLable, optionalContantView, dateLable)
         optionalContantView.addSubview(optionalViewsStackView)
         optionalViewsStackView.addArrangedSubviews(views: topLable, vinLable)
-
+        
         creditView.addSubviews(views: leasingButton, mounthlySumLabel)
     }
     
     
     
-//MARK: - Constraintes
+    //MARK: - Constraintes
     
     private func constraintes() {
         
@@ -127,20 +129,20 @@ final class CarsTableViewCell: UITableViewCell {
         priceView.trailingAnchor.constraint(equalTo: globalView.trailingAnchor, constant: -10).isActive = true
         priceView.heightAnchor.constraint(greaterThanOrEqualToConstant: 35).isActive = true
         priceView.widthAnchor.constraint(equalTo: globalView.widthAnchor, multiplier: 0.55).isActive = true
-
+        
         
         imageCollectionView.translatesAutoresizingMaskIntoConstraints = false
         imageCollectionView.topAnchor.constraint(equalTo: priceView.bottomAnchor, constant: 5).isActive = true
         imageCollectionView.leadingAnchor.constraint(equalTo: globalView.leadingAnchor, constant: 10).isActive = true
         imageCollectionView.trailingAnchor.constraint(equalTo: globalView.trailingAnchor, constant: 0).isActive = true
-        imageCollectionView.heightAnchor.constraint(equalToConstant: 240).isActive = true
-
+        imageCollectionView.heightAnchor.constraint(equalToConstant: 242).isActive = true
+        
         
         descriptionStackView.translatesAutoresizingMaskIntoConstraints = false
         descriptionStackView.topAnchor.constraint(equalTo: imageCollectionView.bottomAnchor, constant: 5).isActive = true
         descriptionStackView.leadingAnchor.constraint(equalTo: globalView.leadingAnchor, constant: 10).isActive = true
         descriptionStackView.trailingAnchor.constraint(equalTo: globalView.trailingAnchor, constant: -10).isActive = true
-        descriptionStackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 70).isActive = true
+        descriptionStackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 68).isActive = true
         
         
         sepparator.translatesAutoresizingMaskIntoConstraints = false
@@ -148,15 +150,15 @@ final class CarsTableViewCell: UITableViewCell {
         sepparator.leadingAnchor.constraint(equalTo: globalView.leadingAnchor, constant: 10).isActive = true
         sepparator.trailingAnchor.constraint(equalTo: globalView.trailingAnchor, constant: -10).isActive = true
         sepparator.heightAnchor.constraint(equalToConstant: 1).isActive = true
-
+        
         
         creditView.translatesAutoresizingMaskIntoConstraints = false
         creditView.topAnchor.constraint(equalTo: sepparator.bottomAnchor).isActive = true
         creditView.bottomAnchor.constraint(equalTo: globalView.bottomAnchor).isActive = true
         creditView.leadingAnchor.constraint(equalTo: globalView.leadingAnchor, constant: 10).isActive = true
-        creditView.trailingAnchor.constraint(equalTo: globalView.trailingAnchor, constant: -10).isActive = true
-        creditView.heightAnchor.constraint(equalToConstant: 45).isActive = true
-
+        creditView.trailingAnchor.constraint(equalTo: globalView.trailingAnchor, constant: -8).isActive = true
+        creditView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
         
         //Constraintes for nameView's subViews
         markButton.translatesAutoresizingMaskIntoConstraints = false
@@ -169,21 +171,21 @@ final class CarsTableViewCell: UITableViewCell {
         hideButton.trailingAnchor.constraint(equalTo: markButton.leadingAnchor).isActive = true
         hideButton.heightAnchor.constraint(equalTo: nameView.heightAnchor, multiplier: 1).isActive = true
         hideButton.widthAnchor.constraint(equalTo: nameView.widthAnchor, multiplier: 0.10).isActive = true
-
+        
         
         nameCarLable.translatesAutoresizingMaskIntoConstraints = false
         nameCarLable.topAnchor.constraint(equalTo: nameView.topAnchor).isActive = true
         nameCarLable.bottomAnchor.constraint(equalTo: nameView.bottomAnchor).isActive = true
         nameCarLable.leadingAnchor.constraint(equalTo: nameView.leadingAnchor).isActive = true
         nameCarLable.trailingAnchor.constraint(equalTo: hideButton.leadingAnchor).isActive = true
-               
+        
         
         //Constraintes for priceView's subViews
         priceLable.translatesAutoresizingMaskIntoConstraints = false
         priceLable.heightAnchor.constraint(equalTo: priceView.heightAnchor, multiplier: 1).isActive = true
         priceLable.widthAnchor.constraint(equalTo: priceView.widthAnchor, multiplier: 0.55).isActive = true
- 
- 
+        
+        
         convertPriceLable.translatesAutoresizingMaskIntoConstraints = false
         convertPriceLable.leadingAnchor.constraint(equalTo: priceLable.trailingAnchor).isActive = true
         convertPriceLable.heightAnchor.constraint(equalTo: priceView.heightAnchor, multiplier: 1).isActive = true
@@ -191,15 +193,15 @@ final class CarsTableViewCell: UITableViewCell {
         
         //Constraintes for descriptionStackView's subViews
         descriptionLable.translatesAutoresizingMaskIntoConstraints = false
-        descriptionLable.heightAnchor.constraint(greaterThanOrEqualToConstant: 35).isActive = true
+        descriptionLable.heightAnchor.constraint(greaterThanOrEqualToConstant: 33).isActive = true
         
         
         optionalContantView.translatesAutoresizingMaskIntoConstraints = false
-        optionalContantView.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        optionalContantView.heightAnchor.constraint(equalToConstant: 33).isActive = true
         
         
         dateLable.translatesAutoresizingMaskIntoConstraints = false
-        dateLable.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        dateLable.heightAnchor.constraint(equalToConstant: 33).isActive = true
         
         
         //Constraintes for optionalContantView's subViews
@@ -211,13 +213,13 @@ final class CarsTableViewCell: UITableViewCell {
         
         topLable.translatesAutoresizingMaskIntoConstraints = false
         topLable.widthAnchor.constraint(equalToConstant: 45).isActive = true
-        topLable.heightAnchor.constraint(equalToConstant: 23).isActive = true
+        topLable.heightAnchor.constraint(equalToConstant: 22).isActive = true
         
         
         vinLable.translatesAutoresizingMaskIntoConstraints = false
         vinLable.widthAnchor.constraint(equalToConstant: 45).isActive = true
-        vinLable.heightAnchor.constraint(equalToConstant: 23).isActive = true
-
+        vinLable.heightAnchor.constraint(equalToConstant: 22).isActive = true
+        
         
         //Constraintes for creditView subViews
         leasingButton.translatesAutoresizingMaskIntoConstraints = false
@@ -236,7 +238,7 @@ final class CarsTableViewCell: UITableViewCell {
     
     
     
-//MARK: - Configure UI
+    //MARK: - Configure UI
     
     private func configureUI() {
         
@@ -252,7 +254,7 @@ final class CarsTableViewCell: UITableViewCell {
         imageCollectionView.backgroundColor = .black
         sepparator.backgroundColor = .separator
         creditView.backgroundColor = .clear
-
+        
         descriptionStackView.backgroundColor = .clear
         descriptionStackView.axis = .vertical
         descriptionStackView.distribution = .fill
@@ -269,34 +271,31 @@ final class CarsTableViewCell: UITableViewCell {
         nameCarLable.textColor = .fontMain
         nameCarLable.font = UIFont.systemFont(ofSize: 17, weight: .regular)//
         nameCarLable.numberOfLines = 0
-        nameCarLable.text = "dskjgfs.,jg"
         
- 
+        
         //priceView's subViews configure
-        priceLable.textAlignment = .left
         priceLable.textColor = .fontMain
+        priceLable.textAlignment = .left
         priceLable.font = UIFont.systemFont(ofSize: 23, weight: .black)
-        priceLable.text = "343434"
-
+        
         convertPriceLable.textColor = .fontSub
         convertPriceLable.textAlignment = .right
-  
+        convertPriceLable.font = UIFont.systemFont(ofSize: 14)
+        
         
         //descriptionStackView's subViews configure
         descriptionLable.numberOfLines = 0
         descriptionLable.textColor = .fontMain
         descriptionLable.textAlignment = .left
         descriptionLable.font = UIFont.systemFont(ofSize: 15, weight: .light)
-        descriptionLable.text = "klsd,gmfs,j/sng.,nxmg/ .ngxk.lgmnk.,s.,mnjl,."
         
         optionalViewsStackView.axis = .horizontal
         optionalViewsStackView.distribution = .fillEqually
         optionalViewsStackView.spacing = 5
-
+        
         dateLable.textAlignment = .left
         dateLable.textColor = .fontSub
         dateLable.font = UIFont.systemFont(ofSize: 13)
-        dateLable.text = "78386539563"
         
         //optionalViewsStackView's subViews configure
         topLable.backgroundColor = .top
@@ -306,8 +305,8 @@ final class CarsTableViewCell: UITableViewCell {
         vinLable.backgroundColor = .vin
         vinLable.layer.cornerRadius = 3
         vinLable.clipsToBounds = true
-
-
+        
+        
         //creditView's subViews configure
         leasingButton.setTitle("Лизинг", for: .normal)
         leasingButton.titleLabel?.font = UIFont.systemFont(ofSize: 13)
@@ -321,7 +320,7 @@ final class CarsTableViewCell: UITableViewCell {
     
     
     
-//MARK: - Setup Layouts for imageCollectionView
+    //MARK: - Setup Layouts for imageCollectionView
     
     private func setupFlowLayout() {
         
@@ -331,6 +330,21 @@ final class CarsTableViewCell: UITableViewCell {
         //        layout.minimumInteritemSpacing = 3
         //        imageCollectionView.isScrollEnabled = true
         imageCollectionView.collectionViewLayout = layout
+    }
+    
+    
+    
+    
+//MARK: - Add Content (public methods)
+    
+    func addContent(addAdvertisement advt: CarModel) {
+        
+        nameCarLable.text = advt.carName.rawValue
+        priceLable.text = String(advt.priceByn)
+        convertPriceLable.text = "~ \(String(advt.convertationPricetoUsd())) $"
+        descriptionLable.text = "\(advt.year) г., \(advt.selector.rawValue), \(advt.engineVolume), \(advt.engineType.rawValue), \(advt.bodyType.rawValue), \(advt.mileage) км."
+        dateLable.text = advt.city.rawValue + " • " + advt.publicDate
+        mounthlySumLabel.text = "~ \(String(advt.leasing())) USD/месяц"
     }
 }
 

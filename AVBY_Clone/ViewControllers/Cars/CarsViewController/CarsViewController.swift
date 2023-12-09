@@ -74,8 +74,15 @@ extension CarsViewController: UITableViewDelegate, UITableViewDataSource {
     //Settings of the cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let advertisement = advertisementsArray.carModels[indexPath.row]
+        let photosNameArray = advertisement.photosName
+        
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CarsTableViewCell", for: indexPath) as? CarsTableViewCell else { return UITableViewCell() }
+        
         cell.backgroundColor = .clear
+        cell.selectionStyle = .none
+        
+        cell.addContent(addAdvertisement: advertisement)
         
         return cell
         

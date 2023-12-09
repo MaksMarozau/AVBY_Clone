@@ -9,50 +9,52 @@ enum CarName: String {
 }
 
 enum Selector: String {
-    case mechanic = "mechanic"
-    case automatic = "automatic"
+    case mechanic = "механика"
+    case automatic = "автомат"
+    case robot = "робот"
+    case variator = "вариатор"
 }
 
 enum EngineType: String {
-    case electric = "electric"
-    case disel = "disel"
-    case gasoline = "gasoline"
+    case electric = "электро"
+    case disel = "дизель"
+    case gasoline = "бензин"
 }
 
 enum BodyType: String {
-    case universal = "universal"
-    case sedan = "sedan"
-    case hatchback = "hatchback"
-    case coupe = "coupe"
+    case universal = "универсал"
+    case sedan = "седан"
+    case hatchback = "хэтчбек"
+    case coupe = "купе"
 }
 
 enum City: String {
-    case Minsk = "Minsk"
-    case Hrodno = "Hrodno"
-    case Brest = "Brest"
-    case Vitebsk = "Vitebsk"
-    case Homel = "Homel"
-    case Mohilev = "Mohilev"
+    case Minsk = "Менск"
+    case Hrodno = "Гродно"
+    case Brest = "Брест"
+    case Vitebsk = "Витебск"
+    case Homel = "Гомель"
+    case Mohilev = "Могилев"
 }
 
 enum Complectation: String {
     case abs = "ABS"
     case esp = "ESP"
-    case rhainSensor = "Rhain Sensor"
-    case backParctronics = "Back Parctronics"
-    case headParctronics = "Head Parctronics"
-    case lightSensor = "Light Sensor"
-    case immobilaizer = "Immobilaizer"
-    case panoramedRoof = "Panoramed Roof"
-    case cruiseControl = "Cruise Control"
-    case engineAutoStart = "Engine Auto Start"
-    case climatControl = "Climat Control"
+    case rhainSensor = "Датчик дождя"
+    case backParctronics = "Задние парктронники"
+    case headParctronics = "Передние парктронники"
+    case lightSensor = "Датчик света"
+    case immobilaizer = "Иммобилайзер"
+    case panoramedRoof = "Панарамная крыша"
+    case cruiseControl = "Круиз контроль"
+    case engineAutoStart = "Старт-стоп"
+    case climatControl = "Климат контроль"
 }
 
 enum WheelsDrive: String {
-    case forward = "forward"
-    case back = "back"
-    case full = "full"
+    case forward = "передний"
+    case back = "задний"
+    case full = "полный"
 }
 
 enum Change: String {
@@ -61,7 +63,7 @@ enum Change: String {
     case audi6 = "Audi a6"
     case audi7 = "Audi a7"
     case audi8 = "Audi a8"
-    case none = "none"
+    case none = "Не интересует"
 }
 
 
