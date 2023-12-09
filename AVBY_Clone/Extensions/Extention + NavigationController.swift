@@ -1,5 +1,6 @@
 import UIKit.UINavigationController
 
+//MARK: - Make a custom color scheme for navigationBar for local useing
 extension UINavigationController {
     
     func setupNavBarColors(_ backgroundColor: UIColor, _ tintColor: UIColor, _ foregroundColor: UIColor) {

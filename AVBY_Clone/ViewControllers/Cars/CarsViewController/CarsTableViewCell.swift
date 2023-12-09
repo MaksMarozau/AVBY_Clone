@@ -1,22 +1,28 @@
 import UIKit
 
+//MARK: - Final classCarsTableViewCell
+
 final class CarsTableViewCell: UITableViewCell {
     
-    //MARK: - Properties
     
-    //    var imageArray: [UIImage] = []
-    //    var countOfView = 0
+//MARK: - Properties
     
+    //MARK: - Properties for UI creating
+    
+    //global view
     private let globalView = UIView()
     
+    
+    //struct views
     private let nameView = UIView()
     private let priceView = UIView()
     private var imageCollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewFlowLayout())
-    private let descriptionView = UIView()
+    private let descriptionStackView = UIStackView()
+    private let sepparator = UIView()
     private let creditView = UIView()
     
-    private let layout = UICollectionViewFlowLayout()
     
+    //struct sub views
     let nameCarLable = UILabel()
     private let hideButton = UIButton()
     private let markButton = UIButton()
@@ -26,15 +32,27 @@ final class CarsTableViewCell: UITableViewCell {
     let convertPriceLable = UILabel()
     
     let descriptionLable = UILabel()
+    let optionalContantView = UIView()
     let dateLable = UILabel()
+    //optionalContantView's subViews
+    let optionalViewsStackView = UIStackView()
+    let topLable = UILabel()
+    let vinLable = UILabel()
     
-    private let sepparator = UIView()
     private let leasingButton = UIButton()
     let mounthlySumLabel = UILabel()
     
-    //    weak var delegate: MainPageCustomeTableViewCellDelegate?
+    //imageCollectionView's layout
+    private let layout = UICollectionViewFlowLayout()
+
     
-    //    var index = 0
+//    var imageArray: [UIImage] = []
+//    var countOfView = 0
+//    
+//    
+//    weak var delegate: MainPageCustomeTableViewCellDelegate?
+//    
+//    var index = 0
     
     
     
@@ -69,15 +87,17 @@ final class CarsTableViewCell: UITableViewCell {
         
         contentView.addSubview(globalView)
         
-        globalView.addSubviews(views: nameView, priceView, imageCollectionView, descriptionView, creditView)
+        globalView.addSubviews(views: nameView, priceView, imageCollectionView, descriptionStackView, sepparator, creditView)
         
         nameView.addSubviews(views: nameCarLable, hideButton, markButton)
         
         priceView.addSubviews(views: priceLable, postfixLable, convertPriceLable)
         
-        descriptionView.addSubviews(views: descriptionLable, dateLable)
-        
-        creditView.addSubviews(views: sepparator, leasingButton, mounthlySumLabel)
+        descriptionStackView.addArrangedSubviews(views: descriptionLable, optionalContantView, dateLable)
+        optionalContantView.addSubview(optionalViewsStackView)
+        optionalViewsStackView.addArrangedSubviews(views: topLable, vinLable)
+
+        creditView.addSubviews(views: leasingButton, mounthlySumLabel)
     }
     
     
@@ -86,7 +106,7 @@ final class CarsTableViewCell: UITableViewCell {
     
     private func constraintes() {
         
-        //for container view
+        //Constraintes for global container view
         globalView.translatesAutoresizingMaskIntoConstraints = false
         globalView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
         globalView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
@@ -95,9 +115,9 @@ final class CarsTableViewCell: UITableViewCell {
         globalView.backgroundColor = .black
         
         
-        //for container subViews
+        //Constraintes for struct container subViews
         nameView.translatesAutoresizingMaskIntoConstraints = false
-        nameView.topAnchor.constraint(equalTo: globalView.topAnchor, constant: 10).isActive = true
+        nameView.topAnchor.constraint(equalTo: globalView.topAnchor, constant: 5).isActive = true
         nameView.leadingAnchor.constraint(equalTo: globalView.leadingAnchor, constant: 10).isActive = true
         nameView.trailingAnchor.constraint(equalTo: globalView.trailingAnchor, constant: -10).isActive = true
         nameView.heightAnchor.constraint(greaterThanOrEqualToConstant: 25).isActive = true
@@ -105,68 +125,81 @@ final class CarsTableViewCell: UITableViewCell {
         
         
         priceView.translatesAutoresizingMaskIntoConstraints = false
-        priceView.topAnchor.constraint(equalTo: nameView.bottomAnchor, constant: 5).isActive = true
+        priceView.topAnchor.constraint(equalTo: nameView.bottomAnchor).isActive = true
         priceView.leadingAnchor.constraint(equalTo: globalView.leadingAnchor, constant: 10).isActive = true
         priceView.trailingAnchor.constraint(equalTo: globalView.trailingAnchor, constant: -10).isActive = true
-        priceView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        priceView.heightAnchor.constraint(greaterThanOrEqualToConstant: 25).isActive = true
         priceView.widthAnchor.constraint(equalTo: globalView.widthAnchor, multiplier: 0.55).isActive = true
         priceView.backgroundColor = .white
 
 
         imageCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        imageCollectionView.topAnchor.constraint(equalTo: priceView.bottomAnchor, constant: 5).isActive = true
+        imageCollectionView.topAnchor.constraint(equalTo: priceView.bottomAnchor).isActive = true
         imageCollectionView.leadingAnchor.constraint(equalTo: globalView.leadingAnchor, constant: 10).isActive = true
         imageCollectionView.trailingAnchor.constraint(equalTo: globalView.trailingAnchor, constant: 0).isActive = true
-        imageCollectionView.heightAnchor.constraint(equalToConstant: 261).isActive = true
+        imageCollectionView.heightAnchor.constraint(equalToConstant: 256).isActive = true
+        imageCollectionView.backgroundColor = .blue
 
         
-        descriptionView.translatesAutoresizingMaskIntoConstraints = false
-        descriptionView.topAnchor.constraint(equalTo: imageCollectionView.bottomAnchor, constant: 5).isActive = true
-        descriptionView.leadingAnchor.constraint(equalTo: globalView.leadingAnchor, constant: 10).isActive = true
-        descriptionView.trailingAnchor.constraint(equalTo: globalView.trailingAnchor, constant: -10).isActive = true
-        descriptionView.heightAnchor.constraint(equalToConstant: 65).isActive = true
-        descriptionView.backgroundColor = .white
+        descriptionStackView.translatesAutoresizingMaskIntoConstraints = false
+        descriptionStackView.topAnchor.constraint(equalTo: imageCollectionView.bottomAnchor).isActive = true
+        descriptionStackView.leadingAnchor.constraint(equalTo: globalView.leadingAnchor, constant: 10).isActive = true
+        descriptionStackView.trailingAnchor.constraint(equalTo: globalView.trailingAnchor, constant: -10).isActive = true
+        descriptionStackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 70).isActive = true
+        descriptionStackView.backgroundColor = .red
+        descriptionStackView.axis = .vertical
+        descriptionStackView.distribution = .fill
+        
+        
+        sepparator.translatesAutoresizingMaskIntoConstraints = false
+        sepparator.topAnchor.constraint(equalTo: descriptionStackView.bottomAnchor, constant: 0).isActive = true
+        sepparator.leadingAnchor.constraint(equalTo: globalView.leadingAnchor, constant: 10).isActive = true
+        sepparator.trailingAnchor.constraint(equalTo: globalView.trailingAnchor, constant: -10).isActive = true
+        sepparator.heightAnchor.constraint(equalToConstant: 2).isActive = true
+        sepparator.backgroundColor = .black
 
         
         creditView.translatesAutoresizingMaskIntoConstraints = false
-        creditView.topAnchor.constraint(equalTo: descriptionView.bottomAnchor, constant: 5).isActive = true
-        creditView.bottomAnchor.constraint(equalTo: globalView.bottomAnchor, constant: -10).isActive = true
+        creditView.topAnchor.constraint(equalTo: sepparator.bottomAnchor).isActive = true
+        creditView.bottomAnchor.constraint(equalTo: globalView.bottomAnchor, constant: -5).isActive = true
         creditView.leadingAnchor.constraint(equalTo: globalView.leadingAnchor, constant: 10).isActive = true
         creditView.trailingAnchor.constraint(equalTo: globalView.trailingAnchor, constant: -10).isActive = true
-        creditView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        creditView.heightAnchor.constraint(equalToConstant: 45).isActive = true
         creditView.backgroundColor = .white
 
         
-        //Constraintes for nameView subViews
+        //Constraintes for nameView's subViews
         markButton.translatesAutoresizingMaskIntoConstraints = false
         markButton.heightAnchor.constraint(equalTo: nameView.heightAnchor, multiplier: 1).isActive = true
         markButton.trailingAnchor.constraint(equalTo: nameView.trailingAnchor, constant: 0).isActive = true
         markButton.widthAnchor.constraint(equalTo: nameView.widthAnchor, multiplier: 0.10).isActive = true
-        
+        markButton.backgroundColor = . orange
         
         hideButton.translatesAutoresizingMaskIntoConstraints = false
         hideButton.trailingAnchor.constraint(equalTo: markButton.leadingAnchor, constant: 0).isActive = true
         hideButton.heightAnchor.constraint(equalTo: nameView.heightAnchor, multiplier: 1).isActive = true
         hideButton.widthAnchor.constraint(equalTo: nameView.widthAnchor, multiplier: 0.10).isActive = true
-        
-        
+        hideButton.backgroundColor = . orange
+
         nameCarLable.translatesAutoresizingMaskIntoConstraints = false
         nameCarLable.topAnchor.constraint(equalTo: nameView.topAnchor).isActive = true
         nameCarLable.bottomAnchor.constraint(equalTo: nameView.bottomAnchor).isActive = true
         nameCarLable.leadingAnchor.constraint(equalTo: nameView.leadingAnchor).isActive = true
         nameCarLable.trailingAnchor.constraint(equalTo: hideButton.leadingAnchor).isActive = true
         nameCarLable.numberOfLines = 0
-        nameCarLable.font = UIFont.systemFont(ofSize: 24, weight: .semibold)
+        nameCarLable.font = UIFont.systemFont(ofSize: 17, weight: .regular)
         nameCarLable.text = "fkgdgldfgsdfsd"
-//        
-//        
-//        //Constraintes for priceView subViews
-//        priceLable.translatesAutoresizingMaskIntoConstraints = false
-//        priceLable.leadingAnchor.constraint(equalTo: priceView.leadingAnchor, constant: 0).isActive = true
-//        priceLable.heightAnchor.constraint(equalTo: priceView.heightAnchor, multiplier: 1).isActive = true
-//        priceLable.widthAnchor.constraint(equalTo: priceView.widthAnchor, multiplier: 0.52).isActive = true
-//        
-//        
+       
+        
+        //Constraintes for priceView's subViews
+        priceLable.translatesAutoresizingMaskIntoConstraints = false
+        priceLable.topAnchor.constraint(equalTo: priceView.topAnchor, constant: 0).isActive = true
+        priceLable.bottomAnchor.constraint(equalTo: priceView.bottomAnchor, constant: 0).isActive = true
+        priceLable.leadingAnchor.constraint(equalTo: priceView.leadingAnchor, constant: 0).isActive = true
+        priceLable.widthAnchor.constraint(equalTo: priceView.widthAnchor, multiplier: 0.52).isActive = true
+        priceLable.text = "56459"
+        priceLable.font = UIFont.systemFont(ofSize: 23, weight: .black)
+ 
 //        postfixLable.translatesAutoresizingMaskIntoConstraints = false
 //        postfixLable.leadingAnchor.constraint(equalTo: priceLable.trailingAnchor, constant: 0).isActive = true
 //        postfixLable.heightAnchor.constraint(equalTo: priceView.heightAnchor, multiplier: 1).isActive = true
@@ -176,41 +209,57 @@ final class CarsTableViewCell: UITableViewCell {
 //        convertPriceLable.translatesAutoresizingMaskIntoConstraints = false
 //        convertPriceLable.leadingAnchor.constraint(equalTo: postfixLable.trailingAnchor, constant: 0).isActive = true
 //        convertPriceLable.heightAnchor.constraint(equalTo: priceView.heightAnchor, multiplier: 1).isActive = true
-//        
-//        
-//        //Constraintes for descriptionView subViews
-//        descriptionLable.translatesAutoresizingMaskIntoConstraints = false
-//        descriptionLable.topAnchor.constraint(equalTo: descriptionView.topAnchor, constant: 0).isActive = true
-//        descriptionLable.widthAnchor.constraint(equalTo: descriptionView.widthAnchor, multiplier: 1).isActive = true
-//        descriptionLable.heightAnchor.constraint(equalTo: descriptionView.heightAnchor, multiplier: 0.5).isActive = true
-//        
-//        
-//        dateLable.translatesAutoresizingMaskIntoConstraints = false
-//        dateLable.topAnchor.constraint(equalTo: descriptionLable.bottomAnchor, constant: 0).isActive = true
-//        dateLable.widthAnchor.constraint(equalTo: descriptionView.widthAnchor, multiplier: 1).isActive = true
-//        dateLable.heightAnchor.constraint(equalTo: descriptionView.heightAnchor, multiplier: 0.5).isActive = true
-//        
-//        
+        
+        
+        //Constraintes for descriptionStackView's subViews
+        descriptionLable.translatesAutoresizingMaskIntoConstraints = false
+        descriptionLable.heightAnchor.constraint(greaterThanOrEqualToConstant: 35).isActive = true
+        descriptionLable.backgroundColor = .orange
+        descriptionLable.numberOfLines = 0
+        descriptionLable.text = "klsd,gmfs,j/sng.,nxmg/ .ngxk.lgmnk.,s.,mnjl,."
+        
+        optionalContantView.translatesAutoresizingMaskIntoConstraints = false
+        optionalContantView.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        optionalContantView.backgroundColor = .gray
+        
+        dateLable.translatesAutoresizingMaskIntoConstraints = false
+        dateLable.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        dateLable.backgroundColor = .white
+        dateLable.text = "78386539563"
+        
+        
+        //Constraintes for optionalContantView's subViews
+        optionalViewsStackView.translatesAutoresizingMaskIntoConstraints = false
+        optionalViewsStackView.topAnchor.constraint(equalTo: optionalContantView.topAnchor, constant: 7).isActive = true
+        optionalViewsStackView.bottomAnchor.constraint(equalTo: optionalContantView.bottomAnchor, constant: -7).isActive = true
+        optionalViewsStackView.widthAnchor.constraint(lessThanOrEqualTo: optionalContantView.widthAnchor, multiplier: 1).isActive = true
+        optionalViewsStackView.axis = .horizontal
+        optionalViewsStackView.distribution = .fillEqually
+        optionalViewsStackView.spacing = 5
+        
+        topLable.translatesAutoresizingMaskIntoConstraints = false
+        topLable.widthAnchor.constraint(equalToConstant: 45).isActive = true
+        topLable.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        topLable.backgroundColor = .green
+        
+        vinLable.translatesAutoresizingMaskIntoConstraints = false
+        vinLable.widthAnchor.constraint(equalToConstant: 45).isActive = true
+        vinLable.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        vinLable.backgroundColor = .blue
+
+        
 //        //Constraintes for creditView subViews
-//        sepparator.translatesAutoresizingMaskIntoConstraints = false
-//        sepparator.topAnchor.constraint(equalTo: creditView.topAnchor, constant: 0).isActive = true
-//        sepparator.leadingAnchor.constraint(equalTo: creditView.leadingAnchor, constant: 10).isActive = true
-//        sepparator.trailingAnchor.constraint(equalTo: creditView.trailingAnchor, constant: 0).isActive = true
-//        sepparator.heightAnchor.constraint(equalToConstant: 2).isActive = true
-//        
-//        
-//        leasingButton.translatesAutoresizingMaskIntoConstraints = false
-//        leasingButton.topAnchor.constraint(equalTo: sepparator.bottomAnchor, constant: 0).isActive = true
-//        leasingButton.bottomAnchor.constraint(equalTo: creditView.bottomAnchor, constant: 0).isActive = true
-//        leasingButton.leadingAnchor.constraint(equalTo: creditView.leadingAnchor, constant: 0).isActive = true
-//        leasingButton.widthAnchor.constraint(equalTo: creditView.widthAnchor, multiplier: 0.25).isActive = true
-//        
-//        
-//        mounthlySumLabel.translatesAutoresizingMaskIntoConstraints = false
-//        mounthlySumLabel.topAnchor.constraint(equalTo: sepparator.bottomAnchor, constant: 0).isActive = true
-//        mounthlySumLabel.bottomAnchor.constraint(equalTo: creditView.bottomAnchor, constant: 0).isActive = true
-//        mounthlySumLabel.trailingAnchor.constraint(equalTo: creditView.trailingAnchor, constant: 0).isActive = true
-//        mounthlySumLabel.widthAnchor.constraint(equalTo: creditView.widthAnchor, multiplier: 0.35).isActive = true
+        leasingButton.translatesAutoresizingMaskIntoConstraints = false
+        leasingButton.topAnchor.constraint(equalTo: creditView.topAnchor).isActive = true
+        leasingButton.bottomAnchor.constraint(equalTo: creditView.bottomAnchor).isActive = true
+        leasingButton.leadingAnchor.constraint(equalTo: creditView.leadingAnchor).isActive = true
+        leasingButton.widthAnchor.constraint(equalTo: creditView.widthAnchor, multiplier: 0.25).isActive = true
+        
+        mounthlySumLabel.translatesAutoresizingMaskIntoConstraints = false
+        mounthlySumLabel.topAnchor.constraint(equalTo: creditView.topAnchor).isActive = true
+        mounthlySumLabel.bottomAnchor.constraint(equalTo: creditView.bottomAnchor).isActive = true
+        mounthlySumLabel.trailingAnchor.constraint(equalTo: creditView.trailingAnchor).isActive = true
+        mounthlySumLabel.widthAnchor.constraint(equalTo: creditView.widthAnchor, multiplier: 0.35).isActive = true
     }
     
     
@@ -225,7 +274,7 @@ final class CarsTableViewCell: UITableViewCell {
         
         nameView.backgroundColor = .clear
         priceView.backgroundColor = .clear
-        descriptionView.backgroundColor = .clear
+        descriptionStackView.backgroundColor = .clear
         creditView.backgroundColor = .clear
         
         imageCollectionView.backgroundColor = .clear
