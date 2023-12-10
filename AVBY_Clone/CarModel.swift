@@ -66,6 +66,13 @@ enum Change: String {
     case none = "Не интересует"
 }
 
+enum Mark: String {
+    case top = "Top"
+    case vin = "Vin"
+    case topVin = "Top and Vin"
+    case none = "none"
+}
+
 
 
 //MARK: - Struct CarModel
@@ -85,7 +92,8 @@ struct CarModel {
     let power: Int
     let fuelTakes: Double
     let color: String
-
+    
+    let marks: Mark
     let engineType: EngineType
     let bodyType: BodyType
     let carName: CarName

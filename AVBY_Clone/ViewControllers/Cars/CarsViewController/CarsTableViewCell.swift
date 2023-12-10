@@ -67,9 +67,10 @@ final class CarsTableViewCell: UITableViewCell {
         constraintes()
         
         setupFlowLayout()
-        //        imageCollectionView.register(MainPageCollectionViewCell.self, forCellWithReuseIdentifier: "MainPageCollectionViewCell")
-        //        imageCollectionView.delegate = self
-        //        imageCollectionView.dataSource = self
+        
+        imageCollectionView.register(CarsCollectionViewCell.self, forCellWithReuseIdentifier: "CarsCollectionViewCell")
+        imageCollectionView.delegate = self
+        imageCollectionView.dataSource = self
         
         configureUI()
         //        targetts()
@@ -142,7 +143,7 @@ final class CarsTableViewCell: UITableViewCell {
         descriptionStackView.topAnchor.constraint(equalTo: imageCollectionView.bottomAnchor, constant: 5).isActive = true
         descriptionStackView.leadingAnchor.constraint(equalTo: globalView.leadingAnchor, constant: 10).isActive = true
         descriptionStackView.trailingAnchor.constraint(equalTo: globalView.trailingAnchor, constant: -10).isActive = true
-        descriptionStackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 68).isActive = true
+        descriptionStackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 60).isActive = true
         
         
         sepparator.translatesAutoresizingMaskIntoConstraints = false
@@ -183,7 +184,7 @@ final class CarsTableViewCell: UITableViewCell {
         //Constraintes for priceView's subViews
         priceLable.translatesAutoresizingMaskIntoConstraints = false
         priceLable.heightAnchor.constraint(equalTo: priceView.heightAnchor, multiplier: 1).isActive = true
-        priceLable.widthAnchor.constraint(equalTo: priceView.widthAnchor, multiplier: 0.55).isActive = true
+        priceLable.widthAnchor.constraint(greaterThanOrEqualToConstant: 50).isActive = true
         
         
         convertPriceLable.translatesAutoresizingMaskIntoConstraints = false
@@ -198,6 +199,7 @@ final class CarsTableViewCell: UITableViewCell {
         
         optionalContantView.translatesAutoresizingMaskIntoConstraints = false
         optionalContantView.heightAnchor.constraint(equalToConstant: 33).isActive = true
+        optionalContantView.isHidden = true
         
         
         dateLable.translatesAutoresizingMaskIntoConstraints = false
@@ -209,16 +211,19 @@ final class CarsTableViewCell: UITableViewCell {
         optionalViewsStackView.topAnchor.constraint(equalTo: optionalContantView.topAnchor, constant: 6).isActive = true
         optionalViewsStackView.bottomAnchor.constraint(equalTo: optionalContantView.bottomAnchor, constant: -6).isActive = true
         optionalViewsStackView.widthAnchor.constraint(lessThanOrEqualTo: optionalContantView.widthAnchor, multiplier: 1).isActive = true
+        optionalViewsStackView.isHidden = true
         
         
         topLable.translatesAutoresizingMaskIntoConstraints = false
         topLable.widthAnchor.constraint(equalToConstant: 45).isActive = true
         topLable.heightAnchor.constraint(equalToConstant: 22).isActive = true
-        
+        topLable.isHidden = true
+
         
         vinLable.translatesAutoresizingMaskIntoConstraints = false
         vinLable.widthAnchor.constraint(equalToConstant: 45).isActive = true
         vinLable.heightAnchor.constraint(equalToConstant: 22).isActive = true
+        vinLable.isHidden = true
         
         
         //Constraintes for creditView subViews
@@ -261,11 +266,27 @@ final class CarsTableViewCell: UITableViewCell {
         
         
         //nameView's subViews configure
-        markButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
-        markButton.tintColor = .fontSub
+        let markAttachement = NSTextAttachment()
+        let markAttachementSize = CGSize(width: 23, height: 18)
+        markAttachement.image = UIImage(systemName: "bookmark")!.withRenderingMode(.alwaysTemplate)
+        markAttachement.bounds = CGRect(origin: .zero, size: markAttachementSize)
+        let markAttachementString = NSAttributedString(attachment: markAttachement)
+        let markAttributedString = NSMutableAttributedString(string: "")
+        markAttributedString.append(markAttachementString)
+        markAttributedString.addAttribute(.foregroundColor, value: UIColor.fontSub, range: NSRange(location: 0, length: markAttributedString.length))
+        markButton.setAttributedTitle(markAttributedString, for: .normal)
         
-        hideButton.setImage(UIImage(systemName: "eye.slash"), for: .normal)
-        hideButton.tintColor = .fontSub
+        
+        let hideAttachement = NSTextAttachment()
+        let hideAttachementSize = CGSize(width: 23, height: 18)
+        hideAttachement.image = UIImage(systemName: "eye.slash")!.withRenderingMode(.alwaysTemplate)
+        hideAttachement.bounds = CGRect(origin: .zero, size: hideAttachementSize)
+        let hideAttachementString = NSAttributedString(attachment: hideAttachement)
+        let hideAttributedString = NSMutableAttributedString(string: "")
+        hideAttributedString.append(hideAttachementString)
+        hideAttributedString.addAttribute(.foregroundColor, value: UIColor.fontSub, range: NSRange(location: 0, length: hideAttributedString.length))
+        hideButton.setAttributedTitle(hideAttributedString, for: .normal)
+        
         
         nameCarLable.textAlignment = .left
         nameCarLable.textColor = .fontMain
@@ -281,6 +302,7 @@ final class CarsTableViewCell: UITableViewCell {
         convertPriceLable.textColor = .fontSub
         convertPriceLable.textAlignment = .right
         convertPriceLable.font = UIFont.systemFont(ofSize: 14)
+        
         
         
         //descriptionStackView's subViews configure
@@ -301,10 +323,35 @@ final class CarsTableViewCell: UITableViewCell {
         topLable.backgroundColor = .top
         topLable.layer.cornerRadius = 3
         topLable.clipsToBounds = true
+        let topAttachement = NSTextAttachment()
+        let imageSize = CGSize(width: 10, height: 9)
+        topAttachement.image = UIImage(systemName: "star.fill")
+        topAttachement.bounds = CGRect(origin: .zero, size: imageSize)
+        let topAttachementString = NSAttributedString(attachment: topAttachement)
+        let topAttributedString = NSMutableAttributedString(string: " ТОП")
+        topAttributedString.insert(topAttachementString, at: 0)
+        let topParagraphStyle = NSMutableParagraphStyle()
+        topParagraphStyle.alignment = .center
+        topAttributedString.addAttribute(.paragraphStyle, value: topParagraphStyle, range: NSRange(location: 0, length: topAttributedString.length))
+        topLable.attributedText = topAttributedString
+        topLable.font = UIFont.systemFont(ofSize: 9, weight: .semibold)
+        
         
         vinLable.backgroundColor = .vin
         vinLable.layer.cornerRadius = 3
         vinLable.clipsToBounds = true
+        let vinAttachement = NSTextAttachment()
+        let vinImageSize = CGSize(width: 10, height: 9)
+        vinAttachement.image = UIImage(systemName: "checkmark")!.withRenderingMode(.alwaysTemplate)
+        vinAttachement.bounds = CGRect(origin: .zero, size: vinImageSize)
+        let vinAttachementString = NSAttributedString(attachment: vinAttachement)
+        let vinAttributedString = NSMutableAttributedString(string: "VIN ")
+        vinAttributedString.append(vinAttachementString)
+        let vinParagraphStyle = NSMutableParagraphStyle()
+        vinParagraphStyle.alignment = .center
+        vinAttributedString.addAttributes([.paragraphStyle: vinParagraphStyle, .foregroundColor: UIColor.white], range: NSRange(location: 0, length: vinAttributedString.length))
+        vinLable.attributedText = vinAttributedString
+        vinLable.font = UIFont.systemFont(ofSize: 9, weight: .semibold)
         
         
         //creditView's subViews configure
@@ -324,7 +371,7 @@ final class CarsTableViewCell: UITableViewCell {
     
     private func setupFlowLayout() {
         
-        layout.itemSize = CGSize(width: 90, height: 130)
+        layout.itemSize = CGSize(width: 300, height: 242)
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 0
         //        layout.minimumInteritemSpacing = 3
@@ -334,22 +381,93 @@ final class CarsTableViewCell: UITableViewCell {
     
     
     
-    
-//MARK: - Add Content (public methods)
+    //MARK: - Add Content (public methods)
     
     func addContent(addAdvertisement advt: CarModel) {
         
         nameCarLable.text = advt.carName.rawValue
-        priceLable.text = String(advt.priceByn)
-        convertPriceLable.text = "~ \(String(advt.convertationPricetoUsd())) $"
+        priceLable.attributedText = priceAttributedText(text: "\(String(advt.priceByn)) р. ", textRange: "р.")
+        convertPriceLable.text = " ≈ \(String(advt.convertationPricetoUsd())) $"
         descriptionLable.text = "\(advt.year) г., \(advt.selector.rawValue), \(advt.engineVolume), \(advt.engineType.rawValue), \(advt.bodyType.rawValue), \(advt.mileage) км."
         dateLable.text = advt.city.rawValue + " • " + advt.publicDate
-        mounthlySumLabel.text = "~ \(String(advt.leasing())) USD/месяц"
+        mounthlySumLabel.attributedText = mountlySumAttributedText(text: "от \(String(advt.leasing())) USD/месяц", textRange: "\(String(advt.leasing())) USD")
+        
+    }
+    
+    
+    func appedImageNamesArray(_ imageNamesArray: [String]) {
+        for name in imageNamesArray {
+            guard let image = UIImage(named: "\(name)") else { return }
+            self.imageArray.append(image)
+            //            imageCollectionView.reloadData()
+        }
+    }
+    
+    
+    func addMarks(_ marks: Mark) {
+        switch marks {
+        case .top:
+            optionalContantView.isHidden = false
+            optionalViewsStackView.isHidden = false
+            topLable.isHidden = false
+        case .vin:
+            optionalContantView.isHidden = false
+            optionalViewsStackView.isHidden = false
+            vinLable.isHidden = false
+        case .topVin:
+            optionalContantView.isHidden = false
+            optionalViewsStackView.isHidden = false
+            topLable.isHidden = false
+            vinLable.isHidden = false
+        case.none :
+            break
+        }
+    }
+    
+    
+    
+//MARK: - Attributed text
+    
+    private func mountlySumAttributedText(text: String, textRange: String) -> NSMutableAttributedString {
+    
+        let attributedText = NSMutableAttributedString(string: text)
+        let range = (text as NSString).range(of: textRange)
+        attributedText.addAttribute(.font, value: UIFont.systemFont(ofSize: 13, weight: .bold), range: range)
+        return attributedText
+    }
+    
+    
+    private func priceAttributedText(text: String, textRange: String) -> NSMutableAttributedString {
+        
+        let attributedText = NSMutableAttributedString(string: text)
+        let range = (text as NSString).range(of: textRange)
+        attributedText.addAttribute(.font, value: UIFont.systemFont(ofSize: 15, weight: .bold), range: range)
+        return attributedText
     }
 }
 
 
 
-//MARK: - Extantion for sign CollectionView protocols
+//MARK: - Extention of UICollectionView
+
+extension CarsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return imageArray.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let image = imageArray[indexPath.item]
+        guard let cell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: "CarsCollectionViewCell", for: indexPath) as? CarsCollectionViewCell else { return UICollectionViewCell() }
+        
+        cell.setImage(image)
+        return cell
+    }
+    
+    
+    
+    
+}
 
 

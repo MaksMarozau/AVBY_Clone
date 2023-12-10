@@ -32,6 +32,8 @@ final class CarsViewController: UIViewController {
         super.viewWillAppear(animated)
         
         navigationController?.setupNavBarColors(UIColor.backgroundSub, UIColor.itemSelected, UIColor.fontMain )
+        navigationItem.title = "\(advertisementsArray.carModels.count) объявления"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.up.arrow.down"), style: .plain, target: nil, action: #selector(sortedTaped))
     }
 
     
@@ -57,6 +59,14 @@ final class CarsViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.rowHeight = UITableView.automaticDimension
     }
+    
+    
+    
+//MARK: - Actions
+    
+    @objc func sortedTaped() {
+        print("Sorted")
+    }
 }
 
 
@@ -67,7 +77,7 @@ extension CarsViewController: UITableViewDelegate, UITableViewDataSource {
     
     //Number of rows in a section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return advertisementsArray.carModels.count
     }
     
     
@@ -76,13 +86,16 @@ extension CarsViewController: UITableViewDelegate, UITableViewDataSource {
         
         let advertisement = advertisementsArray.carModels[indexPath.row]
         let photosNameArray = advertisement.photosName
+        let marks = advertisement.marks
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "CarsTableViewCell", for: indexPath) as? CarsTableViewCell else { return UITableViewCell() }
         
         cell.backgroundColor = .clear
         cell.selectionStyle = .none
         
+        cell.addMarks(marks)
         cell.addContent(addAdvertisement: advertisement)
+        cell.appedImageNamesArray(photosNameArray)
         
         return cell
         
