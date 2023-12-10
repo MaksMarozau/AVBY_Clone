@@ -2,7 +2,7 @@ import UIKit
 
 //MARK: - Finall Class TabBarController
 
-class TabBarController: UITabBarController {
+final class TabBarController: UITabBarController {
     
     
 //MARK: - Private Properties

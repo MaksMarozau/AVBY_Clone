@@ -16,7 +16,6 @@ extension UINavigationController {
         self.navigationBar.scrollEdgeAppearance = appearance
         self.navigationBar.compactAppearance = appearance
         
-//        self.navigationBar.tintColor = .black
         UIBarButtonItem.appearance().tintColor = tintColor
     }
 }

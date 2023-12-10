@@ -16,7 +16,7 @@ final class CarsViewController: UIViewController {
     private let swipeDownAction = UISwipeGestureRecognizer()
     private let swipeUpAction = UISwipeGestureRecognizer()
     
-    var advertisementsArray = Advertisements()
+    private let advertisementsArray = Advertisements()
     
     
     //MARK: - LifeCycles
@@ -33,10 +33,8 @@ final class CarsViewController: UIViewController {
         view.addGestureRecognizer(swipeDownAction)
         view.addGestureRecognizer(swipeUpAction)
         
-        
         constraintes()
         configureUI()
-//        setGestureRecognizers()
     }
     
     
@@ -50,15 +48,16 @@ final class CarsViewController: UIViewController {
     
     
     
-    //MARK: - Constraintes
+//MARK: - Constraintes
     
     private func constraintes() {
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -1).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5).isActive = true
+        
         
         containerView.translatesAutoresizingMaskIntoConstraints = false
         containerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -15).isActive = true
@@ -67,11 +66,13 @@ final class CarsViewController: UIViewController {
         containerView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         containerView.isHidden = false
         
+        
         findeMarkButton.translatesAutoresizingMaskIntoConstraints = false
         findeMarkButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
         findeMarkButton.heightAnchor.constraint(equalTo: containerView.heightAnchor, multiplier: 1).isActive = true
         findeMarkButton.widthAnchor.constraint(equalToConstant: 75).isActive = true
         findeMarkButton.isHidden = false
+        
         
         parametresButton.translatesAutoresizingMaskIntoConstraints = false
         parametresButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
@@ -82,14 +83,17 @@ final class CarsViewController: UIViewController {
     
     
     
-    //MARK: - ConfigureUI
+//MARK: - ConfigureUI
     
     private func configureUI() {
         
+        //tableView config
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
         tableView.rowHeight = UITableView.automaticDimension
         
+        
+        //containerView and his subViews config
         containerView.backgroundColor = .clear
         
         findeMarkButton.backgroundColor = .itemSelected
@@ -103,7 +107,6 @@ final class CarsViewController: UIViewController {
         findAttributedString.addAttribute(.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: findAttributedString.length))
         findeMarkButton.setAttributedTitle(findAttributedString, for: .normal)
         findeMarkButton.layer.cornerRadius = 10
-        
         
         
         parametresButton.backgroundColor = .itemSelected
@@ -123,34 +126,12 @@ final class CarsViewController: UIViewController {
     }
     
     
+       
+//MARK: - Actions
     
-    //MARK: - GestureRecognizers settings
-    
-//    private func setGestureRecognizers() {
-//        swipeDownAction.direction = .down
-//        swipeDownAction.addTarget(self, action: #selector(swipeDown))
-//        
-//        swipeUpAction.direction = .up
-//        swipeUpAction.addTarget(self, action: #selector(swipeUp))
-//    }
-    
-    
-    //MARK: - Actions
-    
-    @objc func sortedTaped() {
+    @objc private func sortedTaped() {
         print("Sorted")
     }
-    
-//    @objc func swipeDown() {
-//        containerView.isHidden = true
-//        findeMarkButton.isHidden = true
-//        parametresButton.isHidden = true
-//        
-//    }
-//    
-//    @objc func swipeUp() {
-//        
-//    }
 }
     
     
@@ -185,6 +166,7 @@ extension CarsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     
+    //Actons at the scroll moment
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.panGestureRecognizer.translation(in: scrollView.superview).y < 0 {
             containerView.isHidden = true
@@ -197,4 +179,3 @@ extension CarsViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
-

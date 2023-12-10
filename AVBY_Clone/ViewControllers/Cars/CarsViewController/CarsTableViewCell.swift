@@ -5,7 +5,7 @@ import UIKit
 final class CarsTableViewCell: UITableViewCell {
     
     
-    //MARK: - Properties
+//MARK: - Properties
     
     //MARK: - Properties for UI creating
     
@@ -58,7 +58,7 @@ final class CarsTableViewCell: UITableViewCell {
     
     
     
-    //MARK: - Initializations for cell
+//MARK: - Initializations for cell
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -83,7 +83,7 @@ final class CarsTableViewCell: UITableViewCell {
     
     
     
-    //MARK: - Add views
+//MARK: - Add views
     
     private func addViews() {
         
@@ -104,7 +104,7 @@ final class CarsTableViewCell: UITableViewCell {
     
     
     
-    //MARK: - Constraintes
+//MARK: - Constraintes
     
     private func constraintes() {
         
@@ -172,6 +172,7 @@ final class CarsTableViewCell: UITableViewCell {
         hideButton.trailingAnchor.constraint(equalTo: markButton.leadingAnchor).isActive = true
         hideButton.heightAnchor.constraint(equalTo: nameView.heightAnchor, multiplier: 1).isActive = true
         hideButton.widthAnchor.constraint(equalTo: nameView.widthAnchor, multiplier: 0.10).isActive = true
+        hideButton.isHidden = true
         
         
         nameCarLable.translatesAutoresizingMaskIntoConstraints = false
@@ -243,7 +244,7 @@ final class CarsTableViewCell: UITableViewCell {
     
     
     
-    //MARK: - Configure UI
+//MARK: - Configure UI
     
     private func configureUI() {
         
@@ -256,7 +257,7 @@ final class CarsTableViewCell: UITableViewCell {
         //globalView's subviews configure
         nameView.backgroundColor = .clear
         priceView.backgroundColor = .clear
-        imageCollectionView.backgroundColor = .black
+        imageCollectionView.backgroundColor = .clear
         sepparator.backgroundColor = .separator
         creditView.backgroundColor = .clear
         
@@ -304,7 +305,6 @@ final class CarsTableViewCell: UITableViewCell {
         convertPriceLable.font = UIFont.systemFont(ofSize: 14)
         
         
-        
         //descriptionStackView's subViews configure
         descriptionLable.numberOfLines = 0
         descriptionLable.textColor = .fontMain
@@ -318,6 +318,7 @@ final class CarsTableViewCell: UITableViewCell {
         dateLable.textAlignment = .left
         dateLable.textColor = .fontSub
         dateLable.font = UIFont.systemFont(ofSize: 13)
+        
         
         //optionalViewsStackView's subViews configure
         topLable.backgroundColor = .top
@@ -374,8 +375,6 @@ final class CarsTableViewCell: UITableViewCell {
         layout.itemSize = CGSize(width: 300, height: 242)
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 0
-        //        layout.minimumInteritemSpacing = 3
-        //        imageCollectionView.isScrollEnabled = true
         imageCollectionView.collectionViewLayout = layout
     }
     
@@ -391,7 +390,6 @@ final class CarsTableViewCell: UITableViewCell {
         descriptionLable.text = "\(advt.year) г., \(advt.selector.rawValue), \(advt.engineVolume), \(advt.engineType.rawValue), \(advt.bodyType.rawValue), \(advt.mileage) км."
         dateLable.text = advt.city.rawValue + " • " + advt.publicDate
         mounthlySumLabel.attributedText = mountlySumAttributedText(text: "от \(String(advt.leasing())) USD/месяц", textRange: "\(String(advt.leasing())) USD")
-        
     }
     
     
@@ -399,7 +397,6 @@ final class CarsTableViewCell: UITableViewCell {
         for name in imageNamesArray {
             guard let image = UIImage(named: "\(name)") else { return }
             self.imageArray.append(image)
-            //            imageCollectionView.reloadData()
         }
     }
     
@@ -407,6 +404,7 @@ final class CarsTableViewCell: UITableViewCell {
     func addMarks(_ marks: Mark) {
         switch marks {
         case .top:
+            hideButton.isHidden = false
             optionalContantView.isHidden = false
             optionalViewsStackView.isHidden = false
             topLable.isHidden = false
@@ -415,6 +413,7 @@ final class CarsTableViewCell: UITableViewCell {
             optionalViewsStackView.isHidden = false
             vinLable.isHidden = false
         case .topVin:
+            hideButton.isHidden = false
             optionalContantView.isHidden = false
             optionalViewsStackView.isHidden = false
             topLable.isHidden = false
@@ -456,6 +455,8 @@ extension CarsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
         return imageArray.count
     }
     
+    
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let image = imageArray[indexPath.item]
@@ -464,10 +465,6 @@ extension CarsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
         cell.setImage(image)
         return cell
     }
-    
-    
-    
-    
 }
 
 
