@@ -35,6 +35,8 @@ final class CarsViewController: UIViewController {
         
         constraintes()
         configureUI()
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.up.arrow.down"), style: .plain, target: self, action: #selector(sortedTaped))
     }
     
     
@@ -43,7 +45,7 @@ final class CarsViewController: UIViewController {
         
         navigationController?.setupNavBarColors(UIColor.backgroundSub, UIColor.itemSelected, UIColor.fontMain )
         navigationItem.title = "\(advertisementsArray.carModels.count) объявления"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.up.arrow.down"), style: .plain, target: nil, action: #selector(sortedTaped))
+        
     }
     
     
@@ -130,7 +132,36 @@ final class CarsViewController: UIViewController {
 //MARK: - Actions
     
     @objc private func sortedTaped() {
-        print("Sorted")
+        
+        let actionSheet = UIAlertController(title: "Сначала самые", message: nil, preferredStyle: .actionSheet)
+        
+        actionSheet.addAction(UIAlertAction(title: "Актуальные", style: .default, handler: { _ in
+            print("Sorted by Актуальные")
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Дешевые", style: .default, handler: { _ in
+            print("Sorted by Дешевые")
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Дорогие", style: .default, handler: { _ in
+            print("Sorted by Дорогие")
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Новые объявления", style: .default, handler: { _ in
+            print("Sorted by Новые объявления")
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Старые объявления", style: .default, handler: { _ in
+            print("Sorted by Старые объявления")
+        }))
+        actionSheet.addAction(UIAlertAction(title: "С наименьшим пробегом", style: .default, handler: { _ in
+            print("Sorted by С наименьшим пробегом")
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Новые по году", style: .default, handler: { _ in
+            print("Sorted by Новые по году")
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Старые по году", style: .default, handler: { _ in
+            print("Sorted by Старые по году")
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Отменить", style: .cancel))
+
+        present(actionSheet, animated: true)
     }
 }
     
@@ -168,6 +199,7 @@ extension CarsViewController: UITableViewDelegate, UITableViewDataSource {
     
     //Actons at the scroll moment
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
         if scrollView.panGestureRecognizer.translation(in: scrollView.superview).y < 0 {
             containerView.isHidden = true
             findeMarkButton.isHidden = true
@@ -177,5 +209,17 @@ extension CarsViewController: UITableViewDelegate, UITableViewDataSource {
             findeMarkButton.isHidden = false
             parametresButton.isHidden = false
         }
+    }
+    
+    
+    //Tap actions of the selected cell
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CarsTableViewCell", for: indexPath) as? CarsTableViewCell else { return }
+        
+        let controller = ViewController()
+        controller.model = [advertisementsArray.carModels[indexPath.row]]
+        
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
