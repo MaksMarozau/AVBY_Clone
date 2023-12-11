@@ -1,5 +1,17 @@
 import UIKit
 
+//MARK: - Protocol CarsTableViewCellDelegate
+
+protocol CarsTableViewCellDelegate: AnyObject {
+    
+    func hidden()
+    func mark()
+    func leasing()
+    func ImageItem(_ indexPathRow: Int)
+}
+
+
+
 //MARK: - Final classCarsTableViewCell
 
 final class CarsTableViewCell: UITableViewCell {
@@ -48,13 +60,10 @@ final class CarsTableViewCell: UITableViewCell {
     //MARK: - Supporting properties
     
     var imageArray: [UIImage] = []
+    weak var delegate: CarsTableViewCellDelegate?
+
     //    var countOfView = 0
-    //
-    //
-    //    weak var delegate: MainPageCustomeTableViewCellDelegate?
-    //
     //    var index = 0
-    
     
     
     
@@ -65,15 +74,13 @@ final class CarsTableViewCell: UITableViewCell {
         
         addViews()
         constraintes()
-        
         setupFlowLayout()
+        configureUI()
+        addTargets()
         
         imageCollectionView.register(CarsCollectionViewCell.self, forCellWithReuseIdentifier: "CarsCollectionViewCell")
         imageCollectionView.delegate = self
         imageCollectionView.dataSource = self
-        
-        configureUI()
-        //        targetts()
     }
     
     
@@ -244,6 +251,18 @@ final class CarsTableViewCell: UITableViewCell {
     
     
     
+//MARK: - Setup Layouts for imageCollectionView
+    
+    private func setupFlowLayout() {
+        
+        layout.itemSize = CGSize(width: 300, height: 242)
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 0
+        imageCollectionView.collectionViewLayout = layout
+    }
+    
+    
+    
 //MARK: - Configure UI
     
     private func configureUI() {
@@ -368,16 +387,25 @@ final class CarsTableViewCell: UITableViewCell {
     
     
     
-    //MARK: - Setup Layouts for imageCollectionView
-    
-    private func setupFlowLayout() {
+//MARK: - Attributed text
         
-        layout.itemSize = CGSize(width: 300, height: 242)
-        layout.scrollDirection = .horizontal
-        layout.minimumLineSpacing = 0
-        imageCollectionView.collectionViewLayout = layout
-    }
-    
+        private func mountlySumAttributedText(text: String, textRange: String) -> NSMutableAttributedString {
+        
+            let attributedText = NSMutableAttributedString(string: text)
+            let range = (text as NSString).range(of: textRange)
+            attributedText.addAttribute(.font, value: UIFont.systemFont(ofSize: 13, weight: .bold), range: range)
+            return attributedText
+        }
+        
+        
+        private func priceAttributedText(text: String, textRange: String) -> NSMutableAttributedString {
+            
+            let attributedText = NSMutableAttributedString(string: text)
+            let range = (text as NSString).range(of: textRange)
+            attributedText.addAttribute(.font, value: UIFont.systemFont(ofSize: 15, weight: .bold), range: range)
+            return attributedText
+        }
+ 
     
     
     //MARK: - Add Content (public methods)
@@ -425,23 +453,29 @@ final class CarsTableViewCell: UITableViewCell {
     
     
     
-//MARK: - Attributed text
+//MARK: - Add targets
     
-    private func mountlySumAttributedText(text: String, textRange: String) -> NSMutableAttributedString {
-    
-        let attributedText = NSMutableAttributedString(string: text)
-        let range = (text as NSString).range(of: textRange)
-        attributedText.addAttribute(.font, value: UIFont.systemFont(ofSize: 13, weight: .bold), range: range)
-        return attributedText
+    private func addTargets() {
+        
+        hideButton.addTarget(self, action: #selector(hideTapped), for: .touchUpInside)
+        markButton.addTarget(self, action: #selector(markTapped), for: .touchUpInside)
+        leasingButton.addTarget(self, action: #selector(leasingTapped), for: .touchUpInside)
     }
     
     
-    private func priceAttributedText(text: String, textRange: String) -> NSMutableAttributedString {
-        
-        let attributedText = NSMutableAttributedString(string: text)
-        let range = (text as NSString).range(of: textRange)
-        attributedText.addAttribute(.font, value: UIFont.systemFont(ofSize: 15, weight: .bold), range: range)
-        return attributedText
+    
+//MARK: - Actions
+    
+    @objc private func hideTapped() {
+        delegate?.hidden()
+    }
+    
+    @objc private func markTapped() {
+        delegate?.mark()
+    }
+    
+    @objc private func leasingTapped() {
+        delegate?.leasing()
     }
 }
 
@@ -464,6 +498,12 @@ extension CarsTableViewCell: UICollectionViewDelegate, UICollectionViewDataSourc
         
         cell.setImage(image)
         return cell
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        delegate?.ImageItem(indexPath.row)
     }
 }
 

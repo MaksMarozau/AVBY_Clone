@@ -35,8 +35,8 @@ final class CarsViewController: UIViewController {
         
         constraintes()
         configureUI()
+        addTargets()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.up.arrow.down"), style: .plain, target: self, action: #selector(sortedTaped))
     }
     
     
@@ -45,7 +45,7 @@ final class CarsViewController: UIViewController {
         
         navigationController?.setupNavBarColors(UIColor.backgroundSub, UIColor.itemSelected, UIColor.fontMain )
         navigationItem.title = "\(advertisementsArray.carModels.count) объявления"
-        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.up.arrow.down"), style: .plain, target: self, action: #selector(sortedTaped))
     }
     
     
@@ -128,8 +128,26 @@ final class CarsViewController: UIViewController {
     }
     
     
+//MARK: - Add targets
+
+    private func addTargets() {
+        
+        findeMarkButton.addTarget(self, action: #selector(findMarkTapped), for: .touchUpInside)
+        parametresButton.addTarget(self, action: #selector(parametresTapped), for: .touchUpInside)
+    }
+    
        
 //MARK: - Actions
+    
+    @objc private func findMarkTapped() {
+        print("Tapped this button and nothing else metter (:")
+    }
+    
+    
+    @objc private func parametresTapped() {
+        print("You tapped the parametres button")
+    }
+    
     
     @objc private func sortedTaped() {
         
@@ -192,6 +210,7 @@ extension CarsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.addMarks(marks)
         cell.addContent(addAdvertisement: advertisement)
         cell.appedImageNamesArray(photosNameArray)
+        cell.delegate = self
         
         return cell
     }
@@ -221,5 +240,36 @@ extension CarsViewController: UITableViewDelegate, UITableViewDataSource {
         controller.model = [advertisementsArray.carModels[indexPath.row]]
         
         navigationController?.pushViewController(controller, animated: true)
+    }
+}
+
+
+//MARK: - Extention of CarsTableViewCellDelegate
+
+extension CarsViewController: CarsTableViewCellDelegate {
+    
+    func ImageItem(_ indexPathRow: Int) {
+        let controller = ViewController()
+        controller.model = [advertisementsArray.carModels[indexPathRow]]
+        
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    
+    func hidden() {
+        print("Advertisement was hidded")
+    }
+    
+    
+    func mark() {
+        print("Advertisement was marked")
+    }
+    
+    
+    func leasing() {
+        print("Leasing info")
+//        let controller = ViewController()
+//        navigationController?.pushViewController(controller, animated: true)
+        
     }
 }
