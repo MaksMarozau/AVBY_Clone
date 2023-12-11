@@ -19,6 +19,7 @@ final class CarsViewController: UIViewController {
     private let advertisementsArray = Advertisements()
     
     
+    
     //MARK: - LifeCycles
     
     override func viewDidLoad() {
@@ -36,7 +37,6 @@ final class CarsViewController: UIViewController {
         constraintes()
         configureUI()
         addTargets()
-        
     }
     
     
@@ -44,7 +44,7 @@ final class CarsViewController: UIViewController {
         super.viewWillAppear(animated)
         
         navigationController?.setupNavBarColors(UIColor.backgroundSub, UIColor.itemSelected, UIColor.fontMain )
-        navigationItem.title = "\(advertisementsArray.carModels.count) объявления"
+        navigationItem.title = "\(advertisementsArray.carModels.count) объявлений"
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "arrow.up.arrow.down"), style: .plain, target: self, action: #selector(sortedTaped))
     }
     
@@ -128,6 +128,7 @@ final class CarsViewController: UIViewController {
     }
     
     
+    
 //MARK: - Add targets
 
     private func addTargets() {
@@ -137,6 +138,7 @@ final class CarsViewController: UIViewController {
     }
     
        
+    
 //MARK: - Actions
     
     @objc private func findMarkTapped() {
@@ -242,6 +244,7 @@ extension CarsViewController: UITableViewDelegate, UITableViewDataSource {
         navigationController?.pushViewController(controller, animated: true)
     }
 }
+
 
 
 //MARK: - Extention of CarsTableViewCellDelegate

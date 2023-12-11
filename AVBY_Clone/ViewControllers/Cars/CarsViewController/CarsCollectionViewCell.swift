@@ -7,7 +7,6 @@ final class CarsCollectionViewCell: UICollectionViewCell {
     
 //MARK: - Properties
     
-
     private let imageView = UIImageView()
     
     

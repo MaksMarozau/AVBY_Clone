@@ -408,7 +408,7 @@ final class CarsTableViewCell: UITableViewCell {
  
     
     
-    //MARK: - Add Content (public methods)
+//MARK: - Add Content (public methods)
     
     func addContent(addAdvertisement advt: CarModel) {
         

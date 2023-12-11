@@ -6,6 +6,9 @@ enum CarName: String {
     case audi6 = "Audi a6"
     case audi7 = "Audi a7"
     case audi8 = "Audi a8"
+    case audiEtronS = "Audi e-tron S"
+    case audi80 = "Audi 80"
+    case audi90 = "Audi 90"
 }
 
 enum Selector: String {
@@ -26,6 +29,7 @@ enum BodyType: String {
     case sedan = "седан"
     case hatchback = "хэтчбек"
     case coupe = "купе"
+    case suv = "внедорожник"
 }
 
 enum City: String {
