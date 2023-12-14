@@ -43,7 +43,7 @@ final class CarsCollectionViewCell: UICollectionViewCell {
     
     private func configUI() {
         imageView.backgroundColor = .clear
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .scaleAspectFill
     }
     
     
