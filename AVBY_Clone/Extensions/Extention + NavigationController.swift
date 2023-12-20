@@ -10,7 +10,7 @@ extension UINavigationController {
         
         appearance.backgroundColor = backgroundColor
         appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor : foregroundColor]
-        appearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : foregroundColor]
+//        appearance.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : foregroundColor]
         
         self.navigationBar.standardAppearance = appearance
         self.navigationBar.scrollEdgeAppearance = appearance

@@ -13,9 +13,6 @@ final class CarsViewController: UIViewController {
     private let findeMarkButton = UIButton()
     private let parametresButton = UIButton()
     
-    private let swipeDownAction = UISwipeGestureRecognizer()
-    private let swipeUpAction = UISwipeGestureRecognizer()
-    
     private let advertisementsArray = Advertisements()
     
     
@@ -31,8 +28,7 @@ final class CarsViewController: UIViewController {
         
         view.addSubviews(views: tableView, containerView)
         containerView.addSubviews(views: findeMarkButton, parametresButton)
-        view.addGestureRecognizer(swipeDownAction)
-        view.addGestureRecognizer(swipeUpAction)
+
         
         constraintes()
         configureUI()
@@ -194,6 +190,7 @@ extension CarsViewController: UITableViewDelegate, UITableViewDataSource {
     //Number of rows in a section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return advertisementsArray.carModels.count
+//        return 20
     }
     
     
@@ -213,7 +210,7 @@ extension CarsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.addContent(addAdvertisement: advertisement)
         cell.appedImageNamesArray(photosNameArray)
         cell.delegate = self
-        
+//        let cell = UITableViewCell()
         return cell
     }
     
@@ -236,9 +233,9 @@ extension CarsViewController: UITableViewDelegate, UITableViewDataSource {
     //Tap actions of the selected cell
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CarsTableViewCell", for: indexPath) as? CarsTableViewCell else { return }
+//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CarsTableViewCell", for: indexPath) as? CarsTableViewCell else { return }
         
-        let controller = ViewController()
+        let controller = DetailsCarViewController()
         controller.model = [advertisementsArray.carModels[indexPath.row]]
         
         navigationController?.pushViewController(controller, animated: true)
@@ -252,7 +249,7 @@ extension CarsViewController: UITableViewDelegate, UITableViewDataSource {
 extension CarsViewController: CarsTableViewCellDelegate {
     
     func ImageItem(_ indexPathRow: Int) {
-        let controller = ViewController()
+        let controller = DetailsCarViewController()
         controller.model = [advertisementsArray.carModels[indexPathRow]]
         
         navigationController?.pushViewController(controller, animated: true)
