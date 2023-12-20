@@ -17,5 +17,7 @@ extension UINavigationController {
         self.navigationBar.compactAppearance = appearance
         
         UIBarButtonItem.appearance().tintColor = tintColor
+        
+//        hidesBottomBarWhenPushed = true
     }
 }

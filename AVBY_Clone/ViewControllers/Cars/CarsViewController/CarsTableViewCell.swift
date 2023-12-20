@@ -123,7 +123,7 @@ final class CarsTableViewCell: UITableViewCell {
         globalView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         
         
-        //Constraintes for struct container subViews
+        //Constraintes for global's subViews
         nameView.translatesAutoresizingMaskIntoConstraints = false
         nameView.topAnchor.constraint(equalTo: globalView.topAnchor, constant: 10).isActive = true
         nameView.leadingAnchor.constraint(equalTo: globalView.leadingAnchor, constant: 10).isActive = true
@@ -310,7 +310,7 @@ final class CarsTableViewCell: UITableViewCell {
         
         nameCarLable.textAlignment = .left
         nameCarLable.textColor = .fontMain
-        nameCarLable.font = UIFont.systemFont(ofSize: 17, weight: .regular)//
+        nameCarLable.font = UIFont.systemFont(ofSize: 17, weight: .regular)
         nameCarLable.numberOfLines = 0
         
         

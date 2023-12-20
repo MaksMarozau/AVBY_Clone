@@ -18,8 +18,11 @@ final class DetailsCarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tabBarController?.tabBar.isHidden = true
+        
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.register(DetailsCarTableViewCell.self, forCellReuseIdentifier: "DetailsCarTableViewCell")
         
         view.addSubviews(views: tableView)
 
@@ -34,10 +37,10 @@ final class DetailsCarViewController: UIViewController {
     private func constraintes() {
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -1).isActive = true
-        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5).isActive = true
+        tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
     }
     
     
@@ -58,13 +61,20 @@ final class DetailsCarViewController: UIViewController {
 extension DetailsCarViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return model.count
     }
+    
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = UITableViewCell()
+        let model = self.model[indexPath.row]
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "DetailsCarTableViewCell", for: indexPath) as? DetailsCarTableViewCell else { return UITableViewCell() }
+        
         cell.backgroundColor = .gray
+
+        cell.addContent(addAdverisement: model, 0)
         return cell
     }
     
