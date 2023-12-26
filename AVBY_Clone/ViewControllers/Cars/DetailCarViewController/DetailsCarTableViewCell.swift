@@ -22,9 +22,10 @@ final class DetailsCarTableViewCell: UITableViewCell {
     private let creditButton = UIButton()
     private let bankIcon = UIImageView()
     private let buttonsStackView = UIStackView()
-    private let shareButton = UIButton()
-    private let commentButton = UIButton()
-    private let markButton = UIButton()
+    
+    private let shareButton = SpetialCustomButton(titleImage: UIImage(systemName: "square.and.arrow.up"), titleText: "Поделиться")
+    private let commentButton = SpetialCustomButton(titleImage: UIImage(systemName: "rectangle.portrait.badge.plus"), titleText: "Комментарий")
+    private let markButton = SpetialCustomButton(titleImage: UIImage(systemName: "bookmark"), titleText: "В закладки")
     
     private let sepparatorTop = UIView()
     
@@ -264,42 +265,6 @@ final class DetailsCarTableViewCell: UITableViewCell {
         bankIcon.image = UIImage(named: "belveb")
         bankIcon.layer.cornerRadius = 10
         bankIcon.clipsToBounds = true
-        
-        
-        //buttonsStackView's subview configure
-        shareButton.setTitle("Поделиться\nпирожком", for: .normal)
-        shareButton.setTitleColor(UIColor.credit, for: .normal)
-        shareButton.titleLabel?.font = UIFont.systemFont(ofSize: 9)
-        shareButton.titleLabel?.numberOfLines = 2
-        shareButton.titleLabel?.textAlignment = .center
-//        shareButton.setImage(UIImage(systemName: "square.and.arrow.up"), for: .normal)
-//        shareButton.tintColor = UIColor.credit
-//        var configShare = UIButton.Configuration.plain()
-//        configShare.imagePlacement = .top
-//        configShare.imagePadding = 5
-//        shareButton.configuration = configShare
-        
-
-        
-        commentButton.setTitle("Комментарий", for: .normal)
-        commentButton.setTitleColor(UIColor.credit, for: .normal)
-        commentButton.titleLabel?.font = UIFont.systemFont(ofSize: 9)
-        commentButton.setImage(UIImage(systemName: "rectangle.portrait.badge.plus"), for: .normal)
-        commentButton.tintColor = UIColor.credit
-        var configComment = UIButton.Configuration.plain()
-        configComment.imagePlacement = .top
-        configComment.imagePadding = 5
-        commentButton.configuration = configComment
-        
-        markButton.setTitle("В закладки", for: .normal)
-        markButton.setTitleColor(UIColor.credit, for: .normal)
-        markButton.titleLabel?.font = UIFont.systemFont(ofSize: 9)
-        markButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
-        markButton.tintColor = UIColor.credit
-        var configMark = UIButton.Configuration.plain()
-        configMark.imagePlacement = .top
-        configMark.imagePadding = 5
-        markButton.configuration = configMark
         
         
         //descriptionView's subview configure
