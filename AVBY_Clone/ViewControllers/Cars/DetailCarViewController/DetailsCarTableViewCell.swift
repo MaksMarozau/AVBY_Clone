@@ -4,57 +4,64 @@ import UIKit
 
 final class DetailsCarTableViewCell: UITableViewCell {
     
-    //MARK: - Properties of class
+//MARK: - Properties of class
     
+    //globalView
     private let globalView = UIView()
     
+    
+    //struct views
     private let topView = UIView()
     private let imageCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
     private let middleView = UIView()
+    private let sepparatorTop = UIView()
+    private let descriptionView = UIView()
+    private let sepparatorBot = UIView()
     private let parametresStackView = UIStackView()
+    private let countOfViewsButton = UIButton()
     
-    private let layout = UICollectionViewFlowLayout()
     
+    //struct sub views
+    //topView's sub views
     private let nameLable = UILabel()
     private let priceBynLable = UILabel()
     private let priceUsdLable = UILabel()
     
+    //middleView's sub views
     private let creditButton = UIButton()
     private let bankIcon = UIImageView()
     private let buttonsStackView = UIStackView()
+    private let shareButton = SpecialCustomButton(titleImage: UIImage(systemName: "square.and.arrow.up"), titleText: "Поделиться")
+    private let commentButton = SpecialCustomButton(titleImage: UIImage(systemName: "rectangle.portrait.badge.plus"), titleText: "Комментарий")
+    private let markButton = SpecialCustomButton(titleImage: UIImage(systemName: "bookmark"), titleText: "В закладки")
     
-    private let shareButton = SpetialCustomButton(titleImage: UIImage(systemName: "square.and.arrow.up"), titleText: "Поделиться")
-    private let commentButton = SpetialCustomButton(titleImage: UIImage(systemName: "rectangle.portrait.badge.plus"), titleText: "Комментарий")
-    private let markButton = SpetialCustomButton(titleImage: UIImage(systemName: "bookmark"), titleText: "В закладки")
-    
-    private let sepparatorTop = UIView()
-    
-    private let descriptionView = UIView()
+    //descriptionView's sub views
     private let descriptionLable = UILabel()
 
+    //parametresStackView's sub views
     private let allParametes = UIButton()
     private let optionalContantView = UIView()
+    private let cityAndReDateLable = UILabel()
+    //optionalContantView's sub views
     private let optionalStackView = UIStackView()
     private let topLable = UILabel()
     private let vinLable = UILabel()
-    private let sepparatorBot = UIView()
     
-    private let cityAndReDateLable = UILabel()
-    private let countOfViewsButton = UIButton()
+    //imageCollectionView's layout
+    private let layout = UICollectionViewFlowLayout()
+
     
     
-    
-    //MARK: - Initializators
+//MARK: - Initializators
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         
         addSubviews()
         constraintes()
         configureUI()
     }
-    
+
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -67,15 +74,16 @@ final class DetailsCarTableViewCell: UITableViewCell {
     private func addSubviews() {
         
         contentView.addSubview(globalView)
+        
         globalView.addSubviews(views: topView, imageCollectionView, middleView, sepparatorTop, descriptionView, sepparatorBot, parametresStackView, countOfViewsButton)
+        
         topView.addSubviews(views: nameLable, priceBynLable, priceUsdLable)
         middleView.addSubviews(views: creditButton, buttonsStackView)
         creditButton.addSubview(bankIcon)
-        buttonsStackView.addArrangedSubview(shareButton)
-        buttonsStackView.addArrangedSubview(commentButton)
-        buttonsStackView.addArrangedSubview(markButton)
         descriptionView.addSubviews(views: descriptionLable)
         parametresStackView.addArrangedSubviews(views: allParametes, optionalContantView, cityAndReDateLable)
+
+        buttonsStackView.addArrangedSubviews(views: shareButton, commentButton, markButton)
         optionalContantView.addSubview(optionalStackView)
         optionalStackView.addArrangedSubviews(views: topLable, vinLable)
     }
@@ -92,6 +100,7 @@ final class DetailsCarTableViewCell: UITableViewCell {
         globalView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
         globalView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         globalView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        
         
         //Constraintes for global's subViews
         topView.translatesAutoresizingMaskIntoConstraints = false
@@ -140,7 +149,6 @@ final class DetailsCarTableViewCell: UITableViewCell {
         parametresStackView.topAnchor.constraint(equalTo: sepparatorBot.bottomAnchor, constant: 0).isActive = true
         parametresStackView.leadingAnchor.constraint(equalTo: globalView.leadingAnchor, constant: 10).isActive = true
         parametresStackView.trailingAnchor.constraint(equalTo: globalView.trailingAnchor, constant: -10).isActive = true
-//        parametresStackView.bottomAnchor.constraint(equalTo: globalView.bottomAnchor, constant: -30).isActive = true
         parametresStackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 80).isActive = true
         
         
@@ -159,19 +167,16 @@ final class DetailsCarTableViewCell: UITableViewCell {
         nameLable.trailingAnchor.constraint(equalTo: topView.trailingAnchor).isActive = true
         nameLable.heightAnchor.constraint(equalTo: topView.heightAnchor, multiplier: 0.5).isActive = true
         
-        
         priceBynLable.translatesAutoresizingMaskIntoConstraints = false
         priceBynLable.bottomAnchor.constraint(equalTo: topView.bottomAnchor).isActive = true
         priceBynLable.leadingAnchor.constraint(equalTo: topView.leadingAnchor).isActive = true
         priceBynLable.widthAnchor.constraint(greaterThanOrEqualToConstant: 50).isActive = true
         priceBynLable.heightAnchor.constraint(equalTo: topView.heightAnchor, multiplier: 0.5).isActive = true
         
-        
         priceUsdLable.translatesAutoresizingMaskIntoConstraints = false
         priceUsdLable.bottomAnchor.constraint(equalTo: topView.bottomAnchor).isActive = true
         priceUsdLable.leadingAnchor.constraint(equalTo: priceBynLable.trailingAnchor).isActive = true
         priceUsdLable.heightAnchor.constraint(equalTo: topView.heightAnchor, multiplier: 0.5).isActive = true
-        
         
         
         //Constraintes for middleView's subViews
@@ -181,21 +186,20 @@ final class DetailsCarTableViewCell: UITableViewCell {
         creditButton.trailingAnchor.constraint(equalTo: middleView.trailingAnchor).isActive = true
         creditButton.heightAnchor.constraint(equalTo: middleView.heightAnchor, multiplier: 0.42).isActive = true
         
-        
         bankIcon.translatesAutoresizingMaskIntoConstraints = false
         bankIcon.topAnchor.constraint(equalTo: creditButton.topAnchor, constant: 7).isActive = true
         bankIcon.bottomAnchor.constraint(equalTo: creditButton.bottomAnchor, constant: -7).isActive = true
         bankIcon.trailingAnchor.constraint(equalTo: creditButton.trailingAnchor, constant: -10).isActive = true
         bankIcon.widthAnchor.constraint(equalTo: creditButton.widthAnchor, multiplier: 0.25).isActive = true
         
-        
         buttonsStackView.translatesAutoresizingMaskIntoConstraints = false
         buttonsStackView.topAnchor.constraint(equalTo: creditButton.bottomAnchor).isActive = true
         buttonsStackView.leadingAnchor.constraint(equalTo: middleView.leadingAnchor).isActive = true
         buttonsStackView.trailingAnchor.constraint(equalTo: middleView.trailingAnchor).isActive = true
         buttonsStackView.bottomAnchor.constraint(equalTo: middleView.bottomAnchor).isActive = true
+ 
         
-        
+        //Constraintes for descriptionView's subViews
         descriptionLable.translatesAutoresizingMaskIntoConstraints = false
         descriptionLable.topAnchor.constraint(equalTo: descriptionView.topAnchor, constant: 3).isActive = true
         descriptionLable.bottomAnchor.constraint(equalTo: descriptionView.bottomAnchor).isActive = true
@@ -203,6 +207,7 @@ final class DetailsCarTableViewCell: UITableViewCell {
         descriptionLable.trailingAnchor.constraint(equalTo: descriptionView.trailingAnchor).isActive = true
         
         
+        //Constraintes for optionalContantView's subView
         optionalStackView.translatesAutoresizingMaskIntoConstraints = false
         optionalStackView.topAnchor.constraint(equalTo: optionalContantView.topAnchor, constant: 6).isActive = true
         optionalStackView.bottomAnchor.constraint(equalTo: optionalContantView.bottomAnchor, constant: -18).isActive = true
@@ -210,23 +215,16 @@ final class DetailsCarTableViewCell: UITableViewCell {
         optionalStackView.isHidden = false
         
         
-        optionalStackView.axis = .horizontal
-        optionalStackView.distribution = .fillEqually
-        optionalStackView.spacing = 5
-        
+        //Constraintes for optionalStackView's subView
         topLable.translatesAutoresizingMaskIntoConstraints = false
         topLable.widthAnchor.constraint(equalToConstant: 45).isActive = true
         topLable.heightAnchor.constraint(equalToConstant: 20).isActive = true
         topLable.isHidden = false
-//
-//        
+
         vinLable.translatesAutoresizingMaskIntoConstraints = false
         vinLable.widthAnchor.constraint(equalToConstant: 45).isActive = true
         vinLable.heightAnchor.constraint(equalToConstant: 20).isActive = true
         vinLable.isHidden = false
-
-        
-        
     }
     
     
@@ -247,13 +245,21 @@ final class DetailsCarTableViewCell: UITableViewCell {
         
         middleView.backgroundColor = .clear
         
+        sepparatorTop.backgroundColor = .separator
+
         parametresStackView.backgroundColor = .clear
         parametresStackView.axis = .vertical
         parametresStackView.distribution = .fillEqually
         
-        sepparatorTop.backgroundColor = .separator
-        
         sepparatorBot.backgroundColor = .separator
+        
+        countOfViewsButton.backgroundColor = UIColor.backgroundMain
+        countOfViewsButton.setTitleColor(UIColor.dirtyBlue, for: .normal)
+        countOfViewsButton.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        countOfViewsButton.setImage(UIImage(systemName: "eye"), for: .normal)
+        countOfViewsButton.tintColor = UIColor.dirtyBlue
+        countOfViewsButton.layer.cornerRadius = 10
+        countOfViewsButton.addTarget(self, action: #selector(tapCountOfViewsButton), for: .touchUpInside)
         
         
         //topView's subviews configure
@@ -279,11 +285,36 @@ final class DetailsCarTableViewCell: UITableViewCell {
         creditButton.titleLabel?.numberOfLines = 2
         creditButton.contentHorizontalAlignment = .left
         
-        
         buttonsStackView.distribution = .fillEqually
         buttonsStackView.spacing = 10
 
 
+        //descriptionView's subview configure
+        descriptionLable.textColor = .fontMain
+        descriptionLable.textAlignment = .left
+        descriptionLable.font = UIFont.systemFont(ofSize: 17, weight: .light)
+        descriptionLable.numberOfLines = 0
+        
+        optionalStackView.axis = .horizontal
+        optionalStackView.distribution = .fillEqually
+        optionalStackView.spacing = 5
+        
+        
+        //parametresStackView's subviews configure
+        allParametes.setTitle("Все параметры", for: .normal)
+        allParametes.setTitleColor(UIColor.dirtyBlue, for: .normal)
+        allParametes.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+        allParametes.backgroundColor = .clear
+        allParametes.contentHorizontalAlignment = .left
+        
+        optionalContantView.backgroundColor = .clear
+        
+        cityAndReDateLable.backgroundColor = .clear
+        cityAndReDateLable.textColor = .fontSub
+        cityAndReDateLable.numberOfLines = 2
+        cityAndReDateLable.font = UIFont.systemFont(ofSize: 15)
+        
+        
         //creditButton's subview configure
         bankIcon.backgroundColor = .clear
         bankIcon.contentMode = .scaleAspectFill
@@ -292,25 +323,7 @@ final class DetailsCarTableViewCell: UITableViewCell {
         bankIcon.clipsToBounds = true
         
         
-        //descriptionView's subview configure
-        descriptionLable.textColor = .fontMain
-        descriptionLable.textAlignment = .left
-        descriptionLable.font = UIFont.systemFont(ofSize: 17, weight: .light)
-        descriptionLable.numberOfLines = 0
-        
-        //bottomView's subviews configure
-        allParametes.setTitle("Все параметры", for: .normal)
-        allParametes.setTitleColor(UIColor.dirtyBlue, for: .normal)
-        allParametes.titleLabel?.font = UIFont.systemFont(ofSize: 17)
-        allParametes.backgroundColor = .clear
-        allParametes.contentHorizontalAlignment = .left
-        
-        cityAndReDateLable.textColor = .fontSub
-        cityAndReDateLable.numberOfLines = 2
-        cityAndReDateLable.font = UIFont.systemFont(ofSize: 15)
-        
-        
-        //optionalViewsStackView's subViews configure
+        //optionalStackView's subViews configure
         topLable.backgroundColor = .top
         topLable.layer.cornerRadius = 3
         topLable.clipsToBounds = true
@@ -343,16 +356,8 @@ final class DetailsCarTableViewCell: UITableViewCell {
         vinAttributedString.addAttributes([.paragraphStyle: vinParagraphStyle, .foregroundColor: UIColor.white], range: NSRange(location: 0, length: vinAttributedString.length))
         vinLable.attributedText = vinAttributedString
         vinLable.font = UIFont.systemFont(ofSize: 9, weight: .semibold)
-        
-      
-        countOfViewsButton.backgroundColor = UIColor.backgroundMain
-        countOfViewsButton.setTitleColor(UIColor.dirtyBlue, for: .normal)
-        countOfViewsButton.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
-        countOfViewsButton.setImage(UIImage(systemName: "eye"), for: .normal)
-        countOfViewsButton.tintColor = UIColor.dirtyBlue
-        countOfViewsButton.layer.cornerRadius = 10
-        countOfViewsButton.addTarget(self, action: #selector(tapCountOfViewsButton), for: .touchUpInside)
     }
+    
     
     
 //MARK: - Actions
