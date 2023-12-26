@@ -8,6 +8,7 @@ final class DetailsCarViewController: UIViewController {
 //MARK: - Properties of class
     
     private let tableView = UITableView()
+    private let callButton = UIButton()
     
     var model: [CarModel] = []
     
@@ -19,12 +20,13 @@ final class DetailsCarViewController: UIViewController {
         super.viewDidLoad()
         
         self.tabBarController?.tabBar.isHidden = true
+        view.backgroundColor = .backgroundSub
         
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(DetailsCarTableViewCell.self, forCellReuseIdentifier: "DetailsCarTableViewCell")
         
-        view.addSubviews(views: tableView)
+        view.addSubviews(views: tableView, callButton)
 
         constraintes()
         configureUI()
@@ -41,6 +43,13 @@ final class DetailsCarViewController: UIViewController {
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        
+        
+        callButton.translatesAutoresizingMaskIntoConstraints = false
+        callButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -43).isActive = true
+        callButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        callButton.heightAnchor.constraint(equalToConstant: 53).isActive = true
+        callButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.97).isActive = true
     }
     
     
@@ -52,6 +61,12 @@ final class DetailsCarViewController: UIViewController {
         tableView.backgroundColor = .clear
         tableView.separatorStyle = .none
         tableView.rowHeight = UITableView.automaticDimension
+        
+        
+        callButton.setTitle("Позвонить...", for: .normal)
+        callButton.setTitleColor(.white, for: .normal)
+        callButton.backgroundColor = UIColor.vin
+        callButton.layer.cornerRadius = 10
     }
 }
 
@@ -72,7 +87,7 @@ extension DetailsCarViewController: UITableViewDelegate, UITableViewDataSource {
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "DetailsCarTableViewCell", for: indexPath) as? DetailsCarTableViewCell else { return UITableViewCell() }
         
-        cell.backgroundColor = .gray
+        cell.backgroundColor = .clear
 
         cell.addContent(addAdverisement: model, 0)
         return cell

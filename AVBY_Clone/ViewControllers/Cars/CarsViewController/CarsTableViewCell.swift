@@ -415,7 +415,7 @@ final class CarsTableViewCell: UITableViewCell {
         nameCarLable.text = advt.carName.rawValue
         priceLable.attributedText = priceAttributedText(text: "\(String(advt.priceByn)) р. ", textRange: "р.")
         convertPriceLable.text = " ≈ \(String(advt.convertationPricetoUsd())) $"
-        descriptionLable.text = "\(advt.year) г., \(advt.selector.rawValue), \(advt.engineVolume), \(advt.engineType.rawValue), \(advt.bodyType.rawValue), \(advt.mileage) км."
+        descriptionLable.text = "\(advt.year) г., \(advt.selector.rawValue), \(advt.engineVolume) л, \(advt.engineType.rawValue), \(advt.bodyType.rawValue), \(advt.mileage) км"
         dateLable.text = advt.city.rawValue + " • " + advt.publicDate
         mounthlySumLabel.attributedText = mountlySumAttributedText(text: "от \(String(advt.leasing())) USD/месяц", textRange: "\(String(advt.leasing())) USD")
     }

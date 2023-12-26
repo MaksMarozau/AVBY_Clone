@@ -26,14 +26,14 @@ final class SpetialCustomButton: UIButton {
             
             let attachment = NSTextAttachment()
             let setImage = image.withRenderingMode(.alwaysTemplate)
-            let size = CGSize(width: 20, height: 25)
+            let size = CGSize(width: 23, height: 25)
             attachment.image = setImage
             attachment.bounds = CGRect(origin: .zero, size: size)
             let attachmentString = NSAttributedString(attachment: attachment)
             let attributedString = NSMutableAttributedString(string: "\n\(text)")
             attributedString.insert(attachmentString, at: 0)
             
-            attributedString.addAttributes([.foregroundColor : UIColor.credit, .font : UIFont.systemFont(ofSize: 14)], range: NSRange(location: 0, length: attributedString.length))
+            attributedString.addAttributes([.foregroundColor : UIColor.dirtyBlue, .font : UIFont.systemFont(ofSize: 13)], range: NSRange(location: 0, length: attributedString.length))
             
             return attributedString
         }

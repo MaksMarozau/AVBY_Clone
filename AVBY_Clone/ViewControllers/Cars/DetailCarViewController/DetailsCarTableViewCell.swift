@@ -11,7 +11,7 @@ final class DetailsCarTableViewCell: UITableViewCell {
     private let topView = UIView()
     private let imageCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
     private let middleView = UIView()
-    private let bottomView = UIView()
+    private let parametresStackView = UIStackView()
     
     private let layout = UICollectionViewFlowLayout()
     
@@ -33,6 +33,10 @@ final class DetailsCarTableViewCell: UITableViewCell {
     private let descriptionLable = UILabel()
 
     private let allParametes = UIButton()
+    private let optionalContantView = UIView()
+    private let optionalStackView = UIStackView()
+    private let topLable = UILabel()
+    private let vinLable = UILabel()
     private let sepparatorBot = UIView()
     
     private let cityAndReDateLable = UILabel()
@@ -63,7 +67,7 @@ final class DetailsCarTableViewCell: UITableViewCell {
     private func addSubviews() {
         
         contentView.addSubview(globalView)
-        globalView.addSubviews(views: topView, imageCollectionView, middleView, sepparatorTop, descriptionView, sepparatorBot, bottomView)
+        globalView.addSubviews(views: topView, imageCollectionView, middleView, sepparatorTop, descriptionView, sepparatorBot, parametresStackView, countOfViewsButton)
         topView.addSubviews(views: nameLable, priceBynLable, priceUsdLable)
         middleView.addSubviews(views: creditButton, buttonsStackView)
         creditButton.addSubview(bankIcon)
@@ -71,8 +75,9 @@ final class DetailsCarTableViewCell: UITableViewCell {
         buttonsStackView.addArrangedSubview(commentButton)
         buttonsStackView.addArrangedSubview(markButton)
         descriptionView.addSubviews(views: descriptionLable)
-        bottomView.addSubviews(views: allParametes, cityAndReDateLable)
-//        countOfViewsButton
+        parametresStackView.addArrangedSubviews(views: allParametes, optionalContantView, cityAndReDateLable)
+        optionalContantView.addSubview(optionalStackView)
+        optionalStackView.addArrangedSubviews(views: topLable, vinLable)
     }
     
     
@@ -83,31 +88,31 @@ final class DetailsCarTableViewCell: UITableViewCell {
         
         //Constraintes for global container view
         globalView.translatesAutoresizingMaskIntoConstraints = false
-        globalView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0).isActive = true
-        globalView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0).isActive = true
-        globalView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0).isActive = true
-        globalView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5).isActive = true
+        globalView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        globalView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8).isActive = true
+        globalView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        globalView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
         
         //Constraintes for global's subViews
         topView.translatesAutoresizingMaskIntoConstraints = false
-        topView.topAnchor.constraint(equalTo: globalView.topAnchor, constant: 10).isActive = true
+        topView.topAnchor.constraint(equalTo: globalView.topAnchor).isActive = true
         topView.leadingAnchor.constraint(equalTo: globalView.leadingAnchor, constant: 10).isActive = true
         topView.trailingAnchor.constraint(equalTo: globalView.trailingAnchor, constant: -10).isActive = true
-        topView.heightAnchor.constraint(equalToConstant: 65).isActive = true
+        topView.heightAnchor.constraint(equalToConstant: 62).isActive = true
         
         
         imageCollectionView.translatesAutoresizingMaskIntoConstraints = false
         imageCollectionView.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: 10).isActive = true
-        imageCollectionView.leadingAnchor.constraint(equalTo: globalView.leadingAnchor, constant: 5).isActive = true
-        imageCollectionView.trailingAnchor.constraint(equalTo: globalView.trailingAnchor, constant: 0).isActive = true
-        imageCollectionView.heightAnchor.constraint(equalToConstant: 280).isActive = true
+        imageCollectionView.leadingAnchor.constraint(equalTo: globalView.leadingAnchor).isActive = true
+        imageCollectionView.trailingAnchor.constraint(equalTo: globalView.trailingAnchor).isActive = true
+        imageCollectionView.heightAnchor.constraint(equalToConstant: 240).isActive = true
         
         
         middleView.translatesAutoresizingMaskIntoConstraints = false
-        middleView.topAnchor.constraint(equalTo: imageCollectionView.bottomAnchor, constant: 10).isActive = true
+        middleView.topAnchor.constraint(equalTo: imageCollectionView.bottomAnchor, constant: 18).isActive = true
         middleView.leadingAnchor.constraint(equalTo: globalView.leadingAnchor, constant: 10).isActive = true
         middleView.trailingAnchor.constraint(equalTo: globalView.trailingAnchor, constant: -10).isActive = true
-        middleView.heightAnchor.constraint(equalToConstant: 150).isActive = true
+        middleView.heightAnchor.constraint(equalToConstant: 165).isActive = true
         
         
         sepparatorTop.translatesAutoresizingMaskIntoConstraints = false
@@ -118,24 +123,33 @@ final class DetailsCarTableViewCell: UITableViewCell {
         
         
         descriptionView.translatesAutoresizingMaskIntoConstraints = false
-        descriptionView.topAnchor.constraint(equalTo: sepparatorTop.topAnchor, constant: 10).isActive = true
+        descriptionView.topAnchor.constraint(equalTo: sepparatorTop.topAnchor, constant: 18).isActive = true
         descriptionView.leadingAnchor.constraint(equalTo: globalView.leadingAnchor, constant: 10).isActive = true
         descriptionView.trailingAnchor.constraint(equalTo: globalView.trailingAnchor, constant: -10).isActive = true
         descriptionView.heightAnchor.constraint(greaterThanOrEqualToConstant: 33).isActive = true
         
         
         sepparatorBot.translatesAutoresizingMaskIntoConstraints = false
-        sepparatorBot.topAnchor.constraint(equalTo: descriptionLable.bottomAnchor, constant: 5).isActive = true
-        sepparatorBot.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        sepparatorBot.topAnchor.constraint(equalTo: descriptionLable.bottomAnchor, constant: 8).isActive = true
+        sepparatorBot.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 10).isActive = true
         sepparatorBot.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         sepparatorBot.heightAnchor.constraint(equalToConstant: 1).isActive = true
 
         
-        bottomView.translatesAutoresizingMaskIntoConstraints = false
-        bottomView.topAnchor.constraint(equalTo: sepparatorBot.bottomAnchor, constant: 10).isActive = true
-        bottomView.leadingAnchor.constraint(equalTo: globalView.leadingAnchor, constant: 10).isActive = true
-        bottomView.trailingAnchor.constraint(equalTo: globalView.trailingAnchor, constant: -10).isActive = true
-        bottomView.bottomAnchor.constraint(equalTo: globalView.bottomAnchor, constant: -30).isActive = true
+        parametresStackView.translatesAutoresizingMaskIntoConstraints = false
+        parametresStackView.topAnchor.constraint(equalTo: sepparatorBot.bottomAnchor, constant: 0).isActive = true
+        parametresStackView.leadingAnchor.constraint(equalTo: globalView.leadingAnchor, constant: 10).isActive = true
+        parametresStackView.trailingAnchor.constraint(equalTo: globalView.trailingAnchor, constant: -10).isActive = true
+//        parametresStackView.bottomAnchor.constraint(equalTo: globalView.bottomAnchor, constant: -30).isActive = true
+        parametresStackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 80).isActive = true
+        
+        
+        countOfViewsButton.translatesAutoresizingMaskIntoConstraints = false
+        countOfViewsButton.topAnchor.constraint(equalTo: parametresStackView.bottomAnchor, constant: 8).isActive = true
+        countOfViewsButton.bottomAnchor.constraint(equalTo: globalView.bottomAnchor, constant: -5).isActive = true
+        countOfViewsButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        countOfViewsButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.94).isActive = true
+        countOfViewsButton.heightAnchor.constraint(equalToConstant: 55).isActive = true
         
         
         //Constraintes for topView's subViews
@@ -160,13 +174,12 @@ final class DetailsCarTableViewCell: UITableViewCell {
         
         
         
-        
-        //
+        //Constraintes for middleView's subViews
         creditButton.translatesAutoresizingMaskIntoConstraints = false
         creditButton.topAnchor.constraint(equalTo: middleView.topAnchor).isActive = true
         creditButton.leadingAnchor.constraint(equalTo: middleView.leadingAnchor).isActive = true
         creditButton.trailingAnchor.constraint(equalTo: middleView.trailingAnchor).isActive = true
-        creditButton.heightAnchor.constraint(equalTo: middleView.heightAnchor, multiplier: 0.45).isActive = true
+        creditButton.heightAnchor.constraint(equalTo: middleView.heightAnchor, multiplier: 0.42).isActive = true
         
         
         bankIcon.translatesAutoresizingMaskIntoConstraints = false
@@ -184,31 +197,36 @@ final class DetailsCarTableViewCell: UITableViewCell {
         
         
         descriptionLable.translatesAutoresizingMaskIntoConstraints = false
-        descriptionLable.topAnchor.constraint(equalTo: descriptionView.topAnchor).isActive = true
-        descriptionView.bottomAnchor.constraint(equalTo: descriptionView.bottomAnchor).isActive = true
+        descriptionLable.topAnchor.constraint(equalTo: descriptionView.topAnchor, constant: 3).isActive = true
+        descriptionLable.bottomAnchor.constraint(equalTo: descriptionView.bottomAnchor).isActive = true
         descriptionLable.leadingAnchor.constraint(equalTo: descriptionView.leadingAnchor).isActive = true
         descriptionLable.trailingAnchor.constraint(equalTo: descriptionView.trailingAnchor).isActive = true
+        
+        
+        optionalStackView.translatesAutoresizingMaskIntoConstraints = false
+        optionalStackView.topAnchor.constraint(equalTo: optionalContantView.topAnchor, constant: 6).isActive = true
+        optionalStackView.bottomAnchor.constraint(equalTo: optionalContantView.bottomAnchor, constant: -18).isActive = true
+        optionalStackView.widthAnchor.constraint(lessThanOrEqualTo: optionalContantView.widthAnchor, multiplier: 1).isActive = true
+        optionalStackView.isHidden = false
+        
+        
+        optionalStackView.axis = .horizontal
+        optionalStackView.distribution = .fillEqually
+        optionalStackView.spacing = 5
+        
+        topLable.translatesAutoresizingMaskIntoConstraints = false
+        topLable.widthAnchor.constraint(equalToConstant: 45).isActive = true
+        topLable.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        topLable.isHidden = false
+//
+//        
+        vinLable.translatesAutoresizingMaskIntoConstraints = false
+        vinLable.widthAnchor.constraint(equalToConstant: 45).isActive = true
+        vinLable.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        vinLable.isHidden = false
 
         
-        allParametes.translatesAutoresizingMaskIntoConstraints = false
-        allParametes.topAnchor.constraint(equalTo: bottomView.topAnchor, constant: 10).isActive = true
-        allParametes.leadingAnchor.constraint(equalTo: bottomView.leadingAnchor).isActive = true
-        allParametes.widthAnchor.constraint(equalToConstant: 130).isActive = true
-        allParametes.bottomAnchor.constraint(equalTo: bottomView.bottomAnchor, constant: -5).isActive = true
         
-        
-        cityAndReDateLable.translatesAutoresizingMaskIntoConstraints = false
-        cityAndReDateLable.topAnchor.constraint(equalTo: allParametes.topAnchor, constant: 10).isActive = true
-        cityAndReDateLable.bottomAnchor.constraint(equalTo: bottomView.topAnchor, constant: -5).isActive = true
-        cityAndReDateLable.leadingAnchor.constraint(equalTo: bottomView.leadingAnchor).isActive = true
-        cityAndReDateLable.trailingAnchor.constraint(equalTo: bottomView.trailingAnchor).isActive = true
-        
-        
-//        countOfViewsButton.translatesAutoresizingMaskIntoConstraints = false
-//        countOfViewsButton.bottomAnchor.constraint(equalTo: cityContainerView.bottomAnchor).isActive = true
-//        countOfViewsButton.leadingAnchor.constraint(equalTo: cityContainerView.leadingAnchor).isActive = true
-//        countOfViewsButton.trailingAnchor.constraint(equalTo: cityContainerView.trailingAnchor).isActive = true
-//        countOfViewsButton.heightAnchor.constraint(equalTo: cityContainerView.heightAnchor, multiplier: 0.6).isActive = true
     }
     
     
@@ -223,10 +241,18 @@ final class DetailsCarTableViewCell: UITableViewCell {
         
         //globalView's subviews configure
         topView.backgroundColor = .clear
-        imageCollectionView.backgroundColor = .clear
+        
+        imageCollectionView.backgroundColor = .lightGray
+        imageCollectionView.layer.cornerRadius = 10
+        
         middleView.backgroundColor = .clear
-        bottomView.backgroundColor = .clear
+        
+        parametresStackView.backgroundColor = .clear
+        parametresStackView.axis = .vertical
+        parametresStackView.distribution = .fillEqually
+        
         sepparatorTop.backgroundColor = .separator
+        
         sepparatorBot.backgroundColor = .separator
         
         
@@ -238,7 +264,7 @@ final class DetailsCarTableViewCell: UITableViewCell {
 
         priceBynLable.textColor = .fontMain
         priceBynLable.textAlignment = .left
-        priceBynLable.font = UIFont.systemFont(ofSize: 23, weight: .black)
+        priceBynLable.font = UIFont.systemFont(ofSize: 27, weight: .black)
         
         priceUsdLable.textColor = .fontSub
         priceUsdLable.textAlignment = .right
@@ -248,9 +274,8 @@ final class DetailsCarTableViewCell: UITableViewCell {
         //middleView's subviews configure
         creditButton.backgroundColor = .backgroundMain
         creditButton.layer.cornerRadius = 10
-        creditButton.titleLabel?.font = UIFont.systemFont(ofSize: 15)
-        creditButton.subtitleLabel?.font = UIFont.systemFont(ofSize: 15)
-        creditButton.setTitleColor(UIColor.credit, for: .normal)
+        creditButton.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        creditButton.setTitleColor(UIColor.dirtyBlue, for: .normal)
         creditButton.titleLabel?.numberOfLines = 2
         creditButton.contentHorizontalAlignment = .left
         
@@ -261,7 +286,7 @@ final class DetailsCarTableViewCell: UITableViewCell {
 
         //creditButton's subview configure
         bankIcon.backgroundColor = .clear
-        bankIcon.contentMode = .scaleToFill
+        bankIcon.contentMode = .scaleAspectFill
         bankIcon.image = UIImage(named: "belveb")
         bankIcon.layer.cornerRadius = 10
         bankIcon.clipsToBounds = true
@@ -270,26 +295,63 @@ final class DetailsCarTableViewCell: UITableViewCell {
         //descriptionView's subview configure
         descriptionLable.textColor = .fontMain
         descriptionLable.textAlignment = .left
-        descriptionLable.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+        descriptionLable.font = UIFont.systemFont(ofSize: 17, weight: .light)
         descriptionLable.numberOfLines = 0
         
         //bottomView's subviews configure
-        allParametes.setTitle("All parameters", for: .normal)
-        allParametes.setTitleColor(UIColor.credit, for: .normal)
+        allParametes.setTitle("Все параметры", for: .normal)
+        allParametes.setTitleColor(UIColor.dirtyBlue, for: .normal)
+        allParametes.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         allParametes.backgroundColor = .clear
         allParametes.contentHorizontalAlignment = .left
         
         cityAndReDateLable.textColor = .fontSub
         cityAndReDateLable.numberOfLines = 2
-        cityAndReDateLable.font = UIFont.systemFont(ofSize: 13)
+        cityAndReDateLable.font = UIFont.systemFont(ofSize: 15)
+        
+        
+        //optionalViewsStackView's subViews configure
+        topLable.backgroundColor = .top
+        topLable.layer.cornerRadius = 3
+        topLable.clipsToBounds = true
+        let topAttachement = NSTextAttachment()
+        let imageSize = CGSize(width: 10, height: 9)
+        topAttachement.image = UIImage(systemName: "star.fill")
+        topAttachement.bounds = CGRect(origin: .zero, size: imageSize)
+        let topAttachementString = NSAttributedString(attachment: topAttachement)
+        let topAttributedString = NSMutableAttributedString(string: " ТОП")
+        topAttributedString.insert(topAttachementString, at: 0)
+        let topParagraphStyle = NSMutableParagraphStyle()
+        topParagraphStyle.alignment = .center
+        topAttributedString.addAttribute(.paragraphStyle, value: topParagraphStyle, range: NSRange(location: 0, length: topAttributedString.length))
+        topLable.attributedText = topAttributedString
+        topLable.font = UIFont.systemFont(ofSize: 9, weight: .semibold)
+        
+        
+        vinLable.backgroundColor = .vin
+        vinLable.layer.cornerRadius = 3
+        vinLable.clipsToBounds = true
+        let vinAttachement = NSTextAttachment()
+        let vinImageSize = CGSize(width: 10, height: 9)
+        vinAttachement.image = UIImage(systemName: "checkmark")!.withRenderingMode(.alwaysTemplate)
+        vinAttachement.bounds = CGRect(origin: .zero, size: vinImageSize)
+        let vinAttachementString = NSAttributedString(attachment: vinAttachement)
+        let vinAttributedString = NSMutableAttributedString(string: "VIN ")
+        vinAttributedString.append(vinAttachementString)
+        let vinParagraphStyle = NSMutableParagraphStyle()
+        vinParagraphStyle.alignment = .center
+        vinAttributedString.addAttributes([.paragraphStyle: vinParagraphStyle, .foregroundColor: UIColor.white], range: NSRange(location: 0, length: vinAttributedString.length))
+        vinLable.attributedText = vinAttributedString
+        vinLable.font = UIFont.systemFont(ofSize: 9, weight: .semibold)
         
       
-//        countOfViewsButton.backgroundColor = #colorLiteral(red: 0.1912618577, green: 0.1962420642, blue: 0.2175750434, alpha: 1)
-//        countOfViewsButton.layer.cornerRadius = 10
-//        countOfViewsButton.setTitleColor(#colorLiteral(red: 0.3760706782, green: 0.6299359202, blue: 0.8252221346, alpha: 1), for: .normal)
-//        countOfViewsButton.setImage(UIImage(systemName: "eye"), for: .normal)
-//        countOfViewsButton.tintColor = #colorLiteral(red: 0.3760706782, green: 0.6299359202, blue: 0.8252221346, alpha: 1)
-//        countOfViewsButton.addTarget(self, action: #selector(tapCountOfViewsButton), for: .touchUpInside)
+        countOfViewsButton.backgroundColor = UIColor.backgroundMain
+        countOfViewsButton.setTitleColor(UIColor.dirtyBlue, for: .normal)
+        countOfViewsButton.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        countOfViewsButton.setImage(UIImage(systemName: "eye"), for: .normal)
+        countOfViewsButton.tintColor = UIColor.dirtyBlue
+        countOfViewsButton.layer.cornerRadius = 10
+        countOfViewsButton.addTarget(self, action: #selector(tapCountOfViewsButton), for: .touchUpInside)
     }
     
     
@@ -306,14 +368,13 @@ final class DetailsCarTableViewCell: UITableViewCell {
     func addContent(addAdverisement advt: CarModel, _ count:Int) {
         
         nameLable.text = advt.carName.rawValue
-        let attributedString = NSMutableAttributedString(string:"\(String(advt.priceByn))   byn")
-        attributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 24, weight: .heavy), range: NSRange(location: 0, length: 8))
-        priceBynLable.attributedText = attributedString
+
+        priceBynLable.text = "\(String(advt.priceByn))   p"
         priceUsdLable.text = "~\(String(advt.convertationPricetoUsd())) $"
-        creditButton.setTitle("  Credit \n  from \(String(advt.leasing())) byn/mouth", for: .normal)
-        descriptionLable.text = "\(advt.year) y., \(advt.selector), \(advt.engineVolume), \(advt.engineType), \(advt.mileage) km., \(advt.bodyType), \(advt.wheelsDrive)-wheels drive, \(advt.color) color\n\n\(advt.power) h.p., take \(advt.fuelTakes) l/100km"
-        cityAndReDateLable.text = "\(advt.city) \nPublished: \(advt.publicDate), Up: \(advt.reloadDate)"
-        countOfViewsButton.setTitle(" \(count) views", for: .normal)
+        creditButton.setTitle("  Лизинг \n  \(String(advt.leasing())) BYN в месяц", for: .normal)
+        descriptionLable.text = "\(advt.year) г., \(advt.selector.rawValue), \(advt.engineVolume) л, \(advt.engineType.rawValue), \(advt.mileage) км, \(advt.bodyType.rawValue), \(advt.wheelsDrive.rawValue), \(advt.color)\n\n\n\(advt.power) л.с., расход \(advt.fuelTakes) л"
+        cityAndReDateLable.text = "\(advt.city.rawValue)\nопубликовано \(advt.publicDate)"
+        countOfViewsButton.setTitle(" \(count) просмотров", for: .normal)
     }
 }
 
