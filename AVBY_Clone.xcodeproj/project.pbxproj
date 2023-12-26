@@ -24,6 +24,7 @@
 		2DE889552B1CAC32005A3A2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DE889542B1CAC32005A3A2A /* Assets.xcassets */; };
 		2DE889582B1CAC32005A3A2A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DE889562B1CAC32005A3A2A /* LaunchScreen.storyboard */; };
 		2DE92C042B3ACF8100FC554B /* SpecialCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE92C032B3ACF8100FC554B /* SpecialCustomButton.swift */; };
+		2DE92C082B3B48EB00FC554B /* DetailsCarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE92C072B3B48EB00FC554B /* DetailsCarCollectionViewCell.swift */; };
 		2DEF8EE92B23121F002D7691 /* Extention + NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEF8EE82B23121F002D7691 /* Extention + NavigationController.swift */; };
 		2DEF8EEC2B232362002D7691 /* CarsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEF8EEB2B232362002D7691 /* CarsTableViewCell.swift */; };
 		2DEF8EEE2B233795002D7691 /* Extention + UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEF8EED2B233795002D7691 /* Extention + UIView.swift */; };
@@ -49,6 +50,7 @@
 		2DE889572B1CAC32005A3A2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DE889592B1CAC32005A3A2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DE92C032B3ACF8100FC554B /* SpecialCustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialCustomButton.swift; sourceTree = "<group>"; };
+		2DE92C072B3B48EB00FC554B /* DetailsCarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCarCollectionViewCell.swift; sourceTree = "<group>"; };
 		2DEF8EE82B23121F002D7691 /* Extention + NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extention + NavigationController.swift"; sourceTree = "<group>"; };
 		2DEF8EEB2B232362002D7691 /* CarsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsTableViewCell.swift; sourceTree = "<group>"; };
 		2DEF8EED2B233795002D7691 /* Extention + UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extention + UIView.swift"; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 			children = (
 				2D98A9FF2B208D730024B0B4 /* DetailsCarViewController.swift */,
 				2D6465C82B3353670040C7BF /* DetailsCarTableViewCell.swift */,
+				2DE92C072B3B48EB00FC554B /* DetailsCarCollectionViewCell.swift */,
 			);
 			path = DetailCarViewController;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				2D6465C92B3353670040C7BF /* DetailsCarTableViewCell.swift in Sources */,
 				2D98A9F62B1F339A0024B0B4 /* OtherViewController.swift in Sources */,
 				2D67781C2B24ACB90049FCA6 /* CarModel.swift in Sources */,
+				2DE92C082B3B48EB00FC554B /* DetailsCarCollectionViewCell.swift in Sources */,
 				2D98A9EF2B1F32E40024B0B4 /* FavoritesViewController.swift in Sources */,
 				2DE92C042B3ACF8100FC554B /* SpecialCustomButton.swift in Sources */,
 				2DEF8EE92B23121F002D7691 /* Extention + NavigationController.swift in Sources */,

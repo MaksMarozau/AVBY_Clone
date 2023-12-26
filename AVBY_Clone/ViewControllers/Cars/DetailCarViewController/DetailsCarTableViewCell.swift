@@ -4,8 +4,11 @@ import UIKit
 
 final class DetailsCarTableViewCell: UITableViewCell {
     
+    
 //MARK: - Properties of class
     
+    //MARK: - Properties for UI creating
+
     //globalView
     private let globalView = UIView()
     
@@ -49,6 +52,11 @@ final class DetailsCarTableViewCell: UITableViewCell {
     
     //imageCollectionView's layout
     private let layout = UICollectionViewFlowLayout()
+    
+    
+    //MARK: - Supporting properties
+
+    var imageArray: [UIImage] = []
 
     
     
@@ -59,7 +67,12 @@ final class DetailsCarTableViewCell: UITableViewCell {
         
         addSubviews()
         constraintes()
+        setupFlowLayout()
         configureUI()
+        
+        imageCollectionView.register(DetailsCarCollectionViewCell.self, forCellWithReuseIdentifier: "DetailsCarCollectionViewCell")
+        imageCollectionView.dataSource = self
+        imageCollectionView.delegate = self
     }
 
     
@@ -229,6 +242,18 @@ final class DetailsCarTableViewCell: UITableViewCell {
     
     
     
+    //MARK: - Setup Layouts for imageCollectionView
+        
+        private func setupFlowLayout() {
+            
+            layout.itemSize = CGSize(width: 380, height: 240)
+            layout.scrollDirection = .horizontal
+            layout.minimumLineSpacing = 1
+            imageCollectionView.collectionViewLayout = layout
+        }
+    
+    
+    
 //MARK: - Configure UI
         
     private func configureUI() {
@@ -240,8 +265,7 @@ final class DetailsCarTableViewCell: UITableViewCell {
         //globalView's subviews configure
         topView.backgroundColor = .clear
         
-        imageCollectionView.backgroundColor = .lightGray
-        imageCollectionView.layer.cornerRadius = 10
+        imageCollectionView.backgroundColor = .clear
         
         middleView.backgroundColor = .clear
         
@@ -360,6 +384,17 @@ final class DetailsCarTableViewCell: UITableViewCell {
     
     
     
+//MARK: - Add contant (Public method)
+    
+    func appedImageNamesArray(_ imageNamesArray: [String]) {
+        for name in imageNamesArray {
+            guard let image = UIImage(named: "\(name)") else { return }
+            self.imageArray.append(image)
+        }
+    }
+    
+        
+    
 //MARK: - Actions
         
     @objc private func tapCountOfViewsButton() {
@@ -373,7 +408,6 @@ final class DetailsCarTableViewCell: UITableViewCell {
     func addContent(addAdverisement advt: CarModel, _ count:Int) {
         
         nameLable.text = advt.carName.rawValue
-
         priceBynLable.text = "\(String(advt.priceByn))   p"
         priceUsdLable.text = "~\(String(advt.convertationPricetoUsd())) $"
         creditButton.setTitle("  Лизинг \n  \(String(advt.leasing())) BYN в месяц", for: .normal)
@@ -383,4 +417,29 @@ final class DetailsCarTableViewCell: UITableViewCell {
     }
 }
 
+
+
+//MARK: - Extention of UICollectionView
+
+extension DetailsCarTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return imageArray.count
+    }
+    
+    
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let image = imageArray[indexPath.item]
+        
+        guard let cell = imageCollectionView.dequeueReusableCell(withReuseIdentifier: "DetailsCarCollectionViewCell", for: indexPath) as? DetailsCarCollectionViewCell else { return UICollectionViewCell() }
+        
+        cell.backgroundColor = .clear
+        cell.setImage(image)
+        
+        return cell
+    }
+}
 

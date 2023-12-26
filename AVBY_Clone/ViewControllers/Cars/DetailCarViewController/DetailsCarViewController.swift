@@ -90,6 +90,7 @@ extension DetailsCarViewController: UITableViewDelegate, UITableViewDataSource {
         cell.backgroundColor = .clear
 
         cell.addContent(addAdverisement: model, 0)
+        cell.appedImageNamesArray(model.photosName)
         return cell
     }
     
