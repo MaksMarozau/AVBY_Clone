@@ -7,9 +7,18 @@ final class DetailsCarViewController: UIViewController {
     
 //MARK: - Properties of class
     
+    //for UI creating
     private let tableView = UITableView()
     private let callButton = UIButton()
     
+    
+    enum TypeOfCells {
+        case main
+        case additional(title: String, subTitle: String)
+    }
+    
+    
+    //support properties
     var model: [CarModel] = []
     
     
@@ -19,11 +28,12 @@ final class DetailsCarViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .backgroundSub
+        view.backgroundColor = .backgroundMain
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(DetailsCarTableViewCell.self, forCellReuseIdentifier: "DetailsCarTableViewCell")
+        tableView.register(DetailsCarMainTableViewCell.self, forCellReuseIdentifier: "DetailsCarMainTableViewCell")
+        tableView.register(DetailsCarAdditionalTableViewCell.self, forCellReuseIdentifier: "DetailsCarAdditionalTableViewCell")
         
         view.addSubviews(views: tableView, callButton)
 
@@ -89,6 +99,28 @@ final class DetailsCarViewController: UIViewController {
     @objc private func backTapped() {
         navigationController?.popViewController(animated: true)
     }
+    
+    
+    
+//MARK: - Type of cells
+    
+    private func createTypesOfTableViewCells() -> [TypeOfCells] {
+    
+        var complectationString: String = ""
+        model[0].complectation.forEach({ complectationString = complectationString + $0.rawValue + "\n" })
+        
+        var changeString: String = ""
+        model[0].change.forEach({ changeString = changeString + $0.rawValue + "\n" })
+        
+        let cells: [TypeOfCells] = [
+            .main,
+            .additional(title: "Описаие", subTitle: model[0].dascription),
+            .additional(title: "Комплектация", subTitle: complectationString),
+            .additional(title: "Обмен", subTitle: changeString )
+        ]
+        
+        return cells
+    }
 }
 
 
@@ -98,25 +130,35 @@ final class DetailsCarViewController: UIViewController {
 extension DetailsCarViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model.count
+        let cells = createTypesOfTableViewCells()
+        return cells.count
     }
     
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let model = self.model[indexPath.row]
+        let model = self.model[0]
+        let cells = createTypesOfTableViewCells()
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "DetailsCarTableViewCell", for: indexPath) as? DetailsCarTableViewCell else { return UITableViewCell() }
-        
-        cell.backgroundColor = .clear
-
-        cell.addContent(addAdverisement: model, 0)
-        cell.appedImageNamesArray(model.photosName)
-        return cell
+        switch cells[indexPath.row] {
+        case .main:
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "DetailsCarMainTableViewCell", for: indexPath) as? DetailsCarMainTableViewCell else { return UITableViewCell() }
+            
+            cell.backgroundColor = .backgroundSub
+            cell.addContent(addAdverisement: model, 0)
+            cell.appedImageNamesArray(model.photosName)
+            return cell
+            
+        case .additional(let description):
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "DetailsCarAdditionalTableViewCell", for: indexPath) as? DetailsCarAdditionalTableViewCell else { return UITableViewCell() }
+            
+            cell.backgroundColor = .clear
+            cell.setTitleText(description.title)
+            cell.setDescriptionText(description.subTitle)
+            return cell
+        }
     }
-    
-    
-    
-    
 }

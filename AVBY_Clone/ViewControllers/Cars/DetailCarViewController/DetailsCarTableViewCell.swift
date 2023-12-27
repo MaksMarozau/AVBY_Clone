@@ -2,7 +2,7 @@ import UIKit
 
 //MARK: - Final class DetailsCarTableViewCell
 
-final class DetailsCarTableViewCell: UITableViewCell {
+final class DetailsCarMainTableViewCell: UITableViewCell {
     
     
 //MARK: - Properties of class
@@ -171,7 +171,7 @@ final class DetailsCarTableViewCell: UITableViewCell {
         
         countOfViewsButton.translatesAutoresizingMaskIntoConstraints = false
         countOfViewsButton.topAnchor.constraint(equalTo: parametresStackView.bottomAnchor, constant: 8).isActive = true
-        countOfViewsButton.bottomAnchor.constraint(equalTo: globalView.bottomAnchor, constant: -5).isActive = true
+        countOfViewsButton.bottomAnchor.constraint(equalTo: globalView.bottomAnchor, constant: -20).isActive = true
         countOfViewsButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         countOfViewsButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.94).isActive = true
         countOfViewsButton.heightAnchor.constraint(equalToConstant: 55).isActive = true
@@ -448,7 +448,7 @@ final class DetailsCarTableViewCell: UITableViewCell {
 
 //MARK: - Extention of UICollectionView
 
-extension DetailsCarTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+extension DetailsCarMainTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
