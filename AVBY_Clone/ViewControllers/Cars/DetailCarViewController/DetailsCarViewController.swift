@@ -14,12 +14,11 @@ final class DetailsCarViewController: UIViewController {
     
     
     
-//MARK: - Life cycle
+//MARK: - Life cycles
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tabBarController?.tabBar.isHidden = true
         view.backgroundColor = .backgroundSub
         
         tableView.delegate = self
@@ -30,6 +29,16 @@ final class DetailsCarViewController: UIViewController {
 
         constraintes()
         configureUI()
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.tabBarController?.tabBar.isHidden = true
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "ellipsis"), style: .plain, target: self, action: #selector(menuTapped))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(backTapped))
     }
     
     
@@ -68,7 +77,20 @@ final class DetailsCarViewController: UIViewController {
         callButton.backgroundColor = UIColor.vin
         callButton.layer.cornerRadius = 10
     }
+    
+    
+    
+//MARK: - Actions
+    
+    @objc private func menuTapped() {
+        print("You tapped Menu")
+    }
+    
+    @objc private func backTapped() {
+        navigationController?.popViewController(animated: true)
+    }
 }
+
 
 
 //MARK: - Extention for DetailCarViewController

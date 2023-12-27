@@ -1,5 +1,4 @@
 /*
- 3. to create the arrow for "all parametres" string
  4. to make new cells for tableView, where options/configurations and different description of model
  5. to fix tabBar disappearance
  6. to refactor back button in the navi bar
