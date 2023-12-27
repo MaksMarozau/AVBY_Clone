@@ -68,6 +68,8 @@ final class DetailsCarMainTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        contentView.backgroundColor = .backgroundSub
+        
         addSubviews()
         constraintes()
         setupFlowLayout()
@@ -171,10 +173,10 @@ final class DetailsCarMainTableViewCell: UITableViewCell {
         
         countOfViewsButton.translatesAutoresizingMaskIntoConstraints = false
         countOfViewsButton.topAnchor.constraint(equalTo: parametresStackView.bottomAnchor, constant: 8).isActive = true
-        countOfViewsButton.bottomAnchor.constraint(equalTo: globalView.bottomAnchor, constant: -20).isActive = true
+        countOfViewsButton.bottomAnchor.constraint(equalTo: globalView.bottomAnchor, constant: -25).isActive = true
         countOfViewsButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
         countOfViewsButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.94).isActive = true
-        countOfViewsButton.heightAnchor.constraint(equalToConstant: 55).isActive = true
+        countOfViewsButton.heightAnchor.constraint(equalToConstant: 53).isActive = true
         
         
         //Constraintes for topView's subViews

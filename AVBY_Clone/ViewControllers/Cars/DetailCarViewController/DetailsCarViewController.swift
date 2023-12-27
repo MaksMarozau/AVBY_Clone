@@ -15,6 +15,7 @@ final class DetailsCarViewController: UIViewController {
     enum TypeOfCells {
         case main
         case additional(title: String, subTitle: String)
+        case end
     }
     
     
@@ -34,6 +35,7 @@ final class DetailsCarViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(DetailsCarMainTableViewCell.self, forCellReuseIdentifier: "DetailsCarMainTableViewCell")
         tableView.register(DetailsCarAdditionalTableViewCell.self, forCellReuseIdentifier: "DetailsCarAdditionalTableViewCell")
+        tableView.register(DetailCarsEndTableViewCell.self, forCellReuseIdentifier: "DetailCarsEndTableViewCell")
         
         view.addSubviews(views: tableView, callButton)
 
@@ -84,6 +86,7 @@ final class DetailsCarViewController: UIViewController {
         
         callButton.setTitle("Позвонить...", for: .normal)
         callButton.setTitleColor(.white, for: .normal)
+        callButton.titleLabel?.textAlignment = .center
         callButton.backgroundColor = UIColor.vin
         callButton.layer.cornerRadius = 10
     }
@@ -116,7 +119,8 @@ final class DetailsCarViewController: UIViewController {
             .main,
             .additional(title: "Описаие", subTitle: model[0].dascription),
             .additional(title: "Комплектация", subTitle: complectationString),
-            .additional(title: "Обмен", subTitle: changeString )
+            .additional(title: "Обмен", subTitle: changeString),
+            .end
         ]
         
         return cells
@@ -158,6 +162,13 @@ extension DetailsCarViewController: UITableViewDelegate, UITableViewDataSource {
             cell.backgroundColor = .clear
             cell.setTitleText(description.title)
             cell.setDescriptionText(description.subTitle)
+            return cell
+            
+        case .end:
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCarsEndTableViewCell", for: indexPath) as? DetailCarsEndTableViewCell else { return UITableViewCell() }
+            
+            cell.backgroundColor = .clear
             return cell
         }
     }

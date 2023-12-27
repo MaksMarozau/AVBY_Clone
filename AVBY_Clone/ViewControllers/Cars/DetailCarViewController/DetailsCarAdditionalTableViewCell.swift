@@ -37,7 +37,7 @@ final class DetailsCarAdditionalTableViewCell: UITableViewCell {
     private func constraintes() {
         
         containerView.translatesAutoresizingMaskIntoConstraints = false
-        containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12).isActive = true
+        containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true
         containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
@@ -69,12 +69,12 @@ final class DetailsCarAdditionalTableViewCell: UITableViewCell {
         titleLable.backgroundColor = .clear
         titleLable.textColor = .fontMain
         titleLable.textAlignment = .left
-        titleLable.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        titleLable.font = UIFont.systemFont(ofSize: 21, weight: .heavy)
         
         descriptionLable.backgroundColor = .clear
         descriptionLable.textColor = .fontMain
         descriptionLable.textAlignment = .left
-        descriptionLable.font = UIFont.systemFont(ofSize: 18)
+        descriptionLable.font = UIFont.systemFont(ofSize: 15)
         descriptionLable.numberOfLines = 0
     }
     

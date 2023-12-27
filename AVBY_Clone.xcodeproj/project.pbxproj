@@ -31,6 +31,7 @@
 		2DEF8EEE2B233795002D7691 /* Extention + UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEF8EED2B233795002D7691 /* Extention + UIView.swift */; };
 		2DFD05312B3C29AC00704ABB /* Extention + UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFD05302B3C29AC00704ABB /* Extention + UILabel.swift */; };
 		2DFD05332B3C520600704ABB /* DetailsCarAdditionalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFD05322B3C520600704ABB /* DetailsCarAdditionalTableViewCell.swift */; };
+		2DFD05352B3CAA8E00704ABB /* DetailCarsEndTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFD05342B3CAA8E00704ABB /* DetailCarsEndTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		2DEF8EED2B233795002D7691 /* Extention + UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extention + UIView.swift"; sourceTree = "<group>"; };
 		2DFD05302B3C29AC00704ABB /* Extention + UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extention + UILabel.swift"; sourceTree = "<group>"; };
 		2DFD05322B3C520600704ABB /* DetailsCarAdditionalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCarAdditionalTableViewCell.swift; sourceTree = "<group>"; };
+		2DFD05342B3CAA8E00704ABB /* DetailCarsEndTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCarsEndTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				2D98A9FF2B208D730024B0B4 /* DetailsCarViewController.swift */,
 				2D6465C82B3353670040C7BF /* DetailsCarTableViewCell.swift */,
 				2DFD05322B3C520600704ABB /* DetailsCarAdditionalTableViewCell.swift */,
+				2DFD05342B3CAA8E00704ABB /* DetailCarsEndTableViewCell.swift */,
 				2DE92C072B3B48EB00FC554B /* DetailsCarCollectionViewCell.swift */,
 			);
 			path = DetailCarViewController;
@@ -294,6 +297,7 @@
 				2D6465C92B3353670040C7BF /* DetailsCarTableViewCell.swift in Sources */,
 				2DE92C0A2B3B507200FC554B /* ToDo.swift in Sources */,
 				2D98A9F62B1F339A0024B0B4 /* OtherViewController.swift in Sources */,
+				2DFD05352B3CAA8E00704ABB /* DetailCarsEndTableViewCell.swift in Sources */,
 				2D67781C2B24ACB90049FCA6 /* CarModel.swift in Sources */,
 				2DE92C082B3B48EB00FC554B /* DetailsCarCollectionViewCell.swift in Sources */,
 				2D98A9EF2B1F32E40024B0B4 /* FavoritesViewController.swift in Sources */,
