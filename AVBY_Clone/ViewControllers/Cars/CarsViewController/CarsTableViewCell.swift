@@ -386,38 +386,17 @@ final class CarsTableViewCell: UITableViewCell {
     }
     
     
-    
-//MARK: - Attributed text
-        
-        private func mountlySumAttributedText(text: String, textRange: String) -> NSMutableAttributedString {
-        
-            let attributedText = NSMutableAttributedString(string: text)
-            let range = (text as NSString).range(of: textRange)
-            attributedText.addAttribute(.font, value: UIFont.systemFont(ofSize: 13, weight: .bold), range: range)
-            return attributedText
-        }
-        
-        
-        private func priceAttributedText(text: String, textRange: String) -> NSMutableAttributedString {
-            
-            let attributedText = NSMutableAttributedString(string: text)
-            let range = (text as NSString).range(of: textRange)
-            attributedText.addAttribute(.font, value: UIFont.systemFont(ofSize: 15, weight: .bold), range: range)
-            return attributedText
-        }
- 
-    
-    
+   
 //MARK: - Add Content (public methods)
     
     func addContent(addAdvertisement advt: CarModel) {
         
         nameCarLable.text = advt.carName.rawValue
-        priceLable.attributedText = priceAttributedText(text: "\(String(advt.priceByn)) р. ", textRange: "р.")
+        priceLable.attributedFontString(text: "\(String(advt.priceByn)) р. ", textRange: "р.", font: UIFont.systemFont(ofSize: 13, weight: .bold))
         convertPriceLable.text = " ≈ \(String(advt.convertationPricetoUsd())) $"
         descriptionLable.text = "\(advt.year) г., \(advt.selector.rawValue), \(advt.engineVolume) л, \(advt.engineType.rawValue), \(advt.bodyType.rawValue), \(advt.mileage) км"
         dateLable.text = advt.city.rawValue + " • " + advt.publicDate
-        mounthlySumLabel.attributedText = mountlySumAttributedText(text: "от \(String(advt.leasing())) USD/месяц", textRange: "\(String(advt.leasing())) USD")
+        mounthlySumLabel.attributedFontString(text: "от \(String(advt.leasing())) USD/месяц", textRange: "\(String(advt.leasing())) USD", font: UIFont.systemFont(ofSize: 15, weight: .bold))
     }
     
     

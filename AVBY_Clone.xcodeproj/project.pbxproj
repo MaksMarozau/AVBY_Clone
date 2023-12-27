@@ -25,9 +25,11 @@
 		2DE889582B1CAC32005A3A2A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DE889562B1CAC32005A3A2A /* LaunchScreen.storyboard */; };
 		2DE92C042B3ACF8100FC554B /* SpecialCustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE92C032B3ACF8100FC554B /* SpecialCustomButton.swift */; };
 		2DE92C082B3B48EB00FC554B /* DetailsCarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE92C072B3B48EB00FC554B /* DetailsCarCollectionViewCell.swift */; };
+		2DE92C0A2B3B507200FC554B /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE92C092B3B507200FC554B /* ToDo.swift */; };
 		2DEF8EE92B23121F002D7691 /* Extention + NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEF8EE82B23121F002D7691 /* Extention + NavigationController.swift */; };
 		2DEF8EEC2B232362002D7691 /* CarsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEF8EEB2B232362002D7691 /* CarsTableViewCell.swift */; };
 		2DEF8EEE2B233795002D7691 /* Extention + UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEF8EED2B233795002D7691 /* Extention + UIView.swift */; };
+		2DFD05312B3C29AC00704ABB /* Extention + UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DFD05302B3C29AC00704ABB /* Extention + UILabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,9 +53,11 @@
 		2DE889592B1CAC32005A3A2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DE92C032B3ACF8100FC554B /* SpecialCustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialCustomButton.swift; sourceTree = "<group>"; };
 		2DE92C072B3B48EB00FC554B /* DetailsCarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsCarCollectionViewCell.swift; sourceTree = "<group>"; };
+		2DE92C092B3B507200FC554B /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
 		2DEF8EE82B23121F002D7691 /* Extention + NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extention + NavigationController.swift"; sourceTree = "<group>"; };
 		2DEF8EEB2B232362002D7691 /* CarsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsTableViewCell.swift; sourceTree = "<group>"; };
 		2DEF8EED2B233795002D7691 /* Extention + UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extention + UIView.swift"; sourceTree = "<group>"; };
+		2DFD05302B3C29AC00704ABB /* Extention + UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extention + UILabel.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +121,7 @@
 		2DE8894A2B1CAC31005A3A2A /* AVBY_Clone */ = {
 			isa = PBXGroup;
 			children = (
+				2DE92C092B3B507200FC554B /* ToDo.swift */,
 				2D98A9EC2B1F2FC20024B0B4 /* TabBarController.swift */,
 				2D67781B2B24ACB90049FCA6 /* CarModel.swift */,
 				2D67781D2B24AEC80049FCA6 /* Advertisements.swift */,
@@ -143,6 +148,7 @@
 				2DEF8EE82B23121F002D7691 /* Extention + NavigationController.swift */,
 				2DEF8EED2B233795002D7691 /* Extention + UIView.swift */,
 				2D6778192B2476E00049FCA6 /* Extention + UIStackView.swift */,
+				2DFD05302B3C29AC00704ABB /* Extention + UILabel.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -277,10 +283,12 @@
 				2D98A9F12B1F33230024B0B4 /* AdvertisementsViewController.swift in Sources */,
 				2DEF8EEE2B233795002D7691 /* Extention + UIView.swift in Sources */,
 				2D67781A2B2476E00049FCA6 /* Extention + UIStackView.swift in Sources */,
+				2DFD05312B3C29AC00704ABB /* Extention + UILabel.swift in Sources */,
 				2D6778202B24EA3A0049FCA6 /* CarsCollectionViewCell.swift in Sources */,
 				2DE8894C2B1CAC31005A3A2A /* AppDelegate.swift in Sources */,
 				2DEF8EEC2B232362002D7691 /* CarsTableViewCell.swift in Sources */,
 				2D6465C92B3353670040C7BF /* DetailsCarTableViewCell.swift in Sources */,
+				2DE92C0A2B3B507200FC554B /* ToDo.swift in Sources */,
 				2D98A9F62B1F339A0024B0B4 /* OtherViewController.swift in Sources */,
 				2D67781C2B24ACB90049FCA6 /* CarModel.swift in Sources */,
 				2DE92C082B3B48EB00FC554B /* DetailsCarCollectionViewCell.swift in Sources */,

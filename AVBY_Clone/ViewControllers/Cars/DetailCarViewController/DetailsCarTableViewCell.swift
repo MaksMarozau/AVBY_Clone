@@ -29,6 +29,7 @@ final class DetailsCarTableViewCell: UITableViewCell {
     private let nameLable = UILabel()
     private let priceBynLable = UILabel()
     private let priceUsdLable = UILabel()
+    private let detailPriceArrowButton = UIButton()
     
     //middleView's sub views
     private let creditButton = UIButton()
@@ -90,7 +91,7 @@ final class DetailsCarTableViewCell: UITableViewCell {
         
         globalView.addSubviews(views: topView, imageCollectionView, middleView, sepparatorTop, descriptionView, sepparatorBot, parametresStackView, countOfViewsButton)
         
-        topView.addSubviews(views: nameLable, priceBynLable, priceUsdLable)
+        topView.addSubviews(views: nameLable, priceBynLable, priceUsdLable, detailPriceArrowButton)
         middleView.addSubviews(views: creditButton, buttonsStackView)
         creditButton.addSubview(bankIcon)
         descriptionView.addSubviews(views: descriptionLable)
@@ -190,6 +191,12 @@ final class DetailsCarTableViewCell: UITableViewCell {
         priceUsdLable.bottomAnchor.constraint(equalTo: topView.bottomAnchor).isActive = true
         priceUsdLable.leadingAnchor.constraint(equalTo: priceBynLable.trailingAnchor).isActive = true
         priceUsdLable.heightAnchor.constraint(equalTo: topView.heightAnchor, multiplier: 0.5).isActive = true
+        
+        detailPriceArrowButton.translatesAutoresizingMaskIntoConstraints = false
+        detailPriceArrowButton.centerYAnchor.constraint(equalTo: priceUsdLable.centerYAnchor).isActive = true
+        detailPriceArrowButton.leadingAnchor.constraint(equalTo: priceUsdLable.trailingAnchor, constant: 5).isActive = true
+        detailPriceArrowButton.heightAnchor.constraint(equalTo: topView.heightAnchor, multiplier: 0.3).isActive = true
+        detailPriceArrowButton.widthAnchor.constraint(equalToConstant: 28).isActive = true
         
         
         //Constraintes for middleView's subViews
@@ -300,6 +307,11 @@ final class DetailsCarTableViewCell: UITableViewCell {
         priceUsdLable.textAlignment = .right
         priceUsdLable.font = UIFont.systemFont(ofSize: 14)
         
+        detailPriceArrowButton.backgroundColor = .backgroundMain
+        detailPriceArrowButton.layer.cornerRadius = 10
+        detailPriceArrowButton.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+        detailPriceArrowButton.tintColor = UIColor.dirtyBlue
+        
         
         //middleView's subviews configure
         creditButton.backgroundColor = .backgroundMain
@@ -408,8 +420,8 @@ final class DetailsCarTableViewCell: UITableViewCell {
     func addContent(addAdverisement advt: CarModel, _ count:Int) {
         
         nameLable.text = advt.carName.rawValue
-        priceBynLable.text = "\(String(advt.priceByn))   p"
-        priceUsdLable.text = "~\(String(advt.convertationPricetoUsd())) $"
+        priceBynLable.attributedFontString(text: "\(String(advt.priceByn)) p. ", textRange: " р.", font: UIFont.systemFont(ofSize: 13, weight: .bold))
+        priceUsdLable.text = " ≈ \(String(advt.convertationPricetoUsd())) $"
         creditButton.setTitle("  Лизинг \n  \(String(advt.leasing())) BYN в месяц", for: .normal)
         descriptionLable.text = "\(advt.year) г., \(advt.selector.rawValue), \(advt.engineVolume) л, \(advt.engineType.rawValue), \(advt.mileage) км, \(advt.bodyType.rawValue), \(advt.wheelsDrive.rawValue), \(advt.color)\n\n\n\(advt.power) л.с., расход \(advt.fuelTakes) л"
         cityAndReDateLable.text = "\(advt.city.rawValue)\nопубликовано \(advt.publicDate)"
