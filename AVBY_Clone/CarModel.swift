@@ -29,7 +29,8 @@ enum BodyType: String {
     case sedan = "седан"
     case hatchback = "хэтчбек"
     case coupe = "купе"
-    case suv = "внедорожник"
+    case suv3 = "внедорожник 3 дв."
+    case suv5 = "внедорожник 5 дв."
 }
 
 enum City: String {
@@ -56,9 +57,10 @@ enum Complectation: String {
 }
 
 enum WheelsDrive: String {
-    case forward = "передний"
-    case back = "задний"
-    case full = "полный"
+    case forward = "передний привод"
+    case back = "задний привод"
+    case constantFull = "постоянный полный привод"
+    case plugInFull = "подключаемый полный привод"
 }
 
 enum Change: String {

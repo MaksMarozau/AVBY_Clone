@@ -1,5 +1,4 @@
 /*
- 2. to check description (may be it needs to add some description content, wich will add stil one string)
  3. to create the arrow for "all parametres" string
  4. to make new cells for tableView, where options/configurations and different description of model
  5. to fix tabBar disappearance

@@ -46,6 +46,8 @@ final class DetailsCarTableViewCell: UITableViewCell {
     private let allParametes = UIButton()
     private let optionalContantView = UIView()
     private let cityAndReDateLable = UILabel()
+    //allParametres"s sub view
+    private let allParametresChvron = UIImageView()
     //optionalContantView's sub views
     private let optionalStackView = UIStackView()
     private let topLable = UILabel()
@@ -98,6 +100,7 @@ final class DetailsCarTableViewCell: UITableViewCell {
         parametresStackView.addArrangedSubviews(views: allParametes, optionalContantView, cityAndReDateLable)
 
         buttonsStackView.addArrangedSubviews(views: shareButton, commentButton, markButton)
+        allParametes.addSubview(allParametresChvron)
         optionalContantView.addSubview(optionalStackView)
         optionalStackView.addArrangedSubviews(views: topLable, vinLable)
     }
@@ -227,6 +230,12 @@ final class DetailsCarTableViewCell: UITableViewCell {
         descriptionLable.trailingAnchor.constraint(equalTo: descriptionView.trailingAnchor).isActive = true
         
         
+        //Constraintes for allParametes's subViews
+        allParametresChvron.translatesAutoresizingMaskIntoConstraints = false
+        allParametresChvron.centerYAnchor.constraint(equalTo: allParametes.centerYAnchor).isActive = true
+        allParametresChvron.trailingAnchor.constraint(equalTo: allParametes.trailingAnchor, constant: -5).isActive = true
+        
+        
         //Constraintes for optionalContantView's subView
         optionalStackView.translatesAutoresizingMaskIntoConstraints = false
         optionalStackView.topAnchor.constraint(equalTo: optionalContantView.topAnchor, constant: 6).isActive = true
@@ -331,16 +340,12 @@ final class DetailsCarTableViewCell: UITableViewCell {
         descriptionLable.font = UIFont.systemFont(ofSize: 17, weight: .light)
         descriptionLable.numberOfLines = 0
         
-        optionalStackView.axis = .horizontal
-        optionalStackView.distribution = .fillEqually
-        optionalStackView.spacing = 5
-        
-        
+
         //parametresStackView's subviews configure
+        allParametes.backgroundColor = .clear
         allParametes.setTitle("Все параметры", for: .normal)
         allParametes.setTitleColor(UIColor.dirtyBlue, for: .normal)
         allParametes.titleLabel?.font = UIFont.systemFont(ofSize: 17)
-        allParametes.backgroundColor = .clear
         allParametes.contentHorizontalAlignment = .left
         
         optionalContantView.backgroundColor = .clear
@@ -350,6 +355,10 @@ final class DetailsCarTableViewCell: UITableViewCell {
         cityAndReDateLable.numberOfLines = 2
         cityAndReDateLable.font = UIFont.systemFont(ofSize: 15)
         
+        optionalStackView.axis = .horizontal
+        optionalStackView.distribution = .fillEqually
+        optionalStackView.spacing = 5
+        
         
         //creditButton's subview configure
         bankIcon.backgroundColor = .clear
@@ -358,6 +367,12 @@ final class DetailsCarTableViewCell: UITableViewCell {
         bankIcon.layer.cornerRadius = 10
         bankIcon.clipsToBounds = true
         
+        
+        //allParametes's subview configure
+        allParametes.backgroundColor = .clear
+        allParametresChvron.image = UIImage(systemName: "chevron.right")
+        allParametes.tintColor = UIColor.dirtyBlue
+
         
         //optionalStackView's subViews configure
         topLable.backgroundColor = .top
@@ -423,7 +438,7 @@ final class DetailsCarTableViewCell: UITableViewCell {
         priceBynLable.attributedFontString(text: "\(String(advt.priceByn)) p. ", textRange: " р.", font: UIFont.systemFont(ofSize: 13, weight: .bold))
         priceUsdLable.text = " ≈ \(String(advt.convertationPricetoUsd())) $"
         creditButton.setTitle("  Лизинг \n  \(String(advt.leasing())) BYN в месяц", for: .normal)
-        descriptionLable.text = "\(advt.year) г., \(advt.selector.rawValue), \(advt.engineVolume) л, \(advt.engineType.rawValue), \(advt.mileage) км, \(advt.bodyType.rawValue), \(advt.wheelsDrive.rawValue), \(advt.color)\n\n\n\(advt.power) л.с., расход \(advt.fuelTakes) л"
+        descriptionLable.text = "\(advt.year) г., \(advt.selector.rawValue), \(advt.engineVolume) л, \(advt.engineType.rawValue), \(advt.mileage) км, \(advt.bodyType.rawValue), \(advt.wheelsDrive.rawValue), \(advt.color)\n\n\(advt.power) л.с., расход \(advt.fuelTakes) л"
         cityAndReDateLable.text = "\(advt.city.rawValue)\nопубликовано \(advt.publicDate)"
         countOfViewsButton.setTitle(" \(count) просмотров", for: .normal)
     }
