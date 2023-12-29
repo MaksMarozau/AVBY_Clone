@@ -73,7 +73,7 @@ final class CarsTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         addViews()
-        constraintes()
+        setConstraintes()
         setupFlowLayout()
         configureUI()
         addTargets()
@@ -113,7 +113,7 @@ final class CarsTableViewCell: UITableViewCell {
     
 //MARK: - Constraintes
     
-    private func constraintes() {
+    private func setConstraintes() {
         
         //Constraintes for global container view
         globalView.translatesAutoresizingMaskIntoConstraints = false

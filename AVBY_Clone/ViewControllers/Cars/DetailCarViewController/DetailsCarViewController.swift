@@ -39,7 +39,7 @@ final class DetailsCarViewController: UIViewController {
         
         view.addSubviews(views: tableView, callButton)
 
-        constraintes()
+        setConstraintes()
         configureUI()
     }
     
@@ -57,7 +57,7 @@ final class DetailsCarViewController: UIViewController {
     
 //MARK: - Constraintes
     
-    private func constraintes() {
+    private func setConstraintes() {
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true

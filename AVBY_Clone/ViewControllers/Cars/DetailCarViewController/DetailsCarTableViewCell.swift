@@ -35,9 +35,9 @@ final class DetailsCarMainTableViewCell: UITableViewCell {
     private let creditButton = UIButton()
     private let bankIcon = UIImageView()
     private let buttonsStackView = UIStackView()
-    private let shareButton = SpecialCustomButton(titleImage: UIImage(systemName: "square.and.arrow.up"), titleText: "Поделиться")
-    private let commentButton = SpecialCustomButton(titleImage: UIImage(systemName: "rectangle.portrait.badge.plus"), titleText: "Комментарий")
-    private let markButton = SpecialCustomButton(titleImage: UIImage(systemName: "bookmark"), titleText: "В закладки")
+    private let shareButton = DetailsCarSupportButton(titleImage: UIImage(systemName: "square.and.arrow.up"), titleText: "Поделиться")
+    private let commentButton = DetailsCarSupportButton(titleImage: UIImage(systemName: "rectangle.portrait.badge.plus"), titleText: "Комментарий")
+    private let markButton = DetailsCarSupportButton(titleImage: UIImage(systemName: "bookmark"), titleText: "В закладки")
     
     //descriptionView's sub views
     private let descriptionLable = UILabel()
@@ -71,7 +71,7 @@ final class DetailsCarMainTableViewCell: UITableViewCell {
         contentView.backgroundColor = .backgroundSub
         
         addSubviews()
-        constraintes()
+        setConstraintes()
         setupFlowLayout()
         configureUI()
         
@@ -111,7 +111,7 @@ final class DetailsCarMainTableViewCell: UITableViewCell {
     
 //MARK: - Constraintes
     
-    private func constraintes() {
+    private func setConstraintes() {
         
         //Constraintes for global container view
         globalView.translatesAutoresizingMaskIntoConstraints = false

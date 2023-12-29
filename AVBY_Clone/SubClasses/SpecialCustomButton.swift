@@ -1,7 +1,7 @@
 import UIKit.UIButton
 
 
-final class SpecialCustomButton: UIButton {
+final class DetailsCarSupportButton: UIButton {
     
     let titleImage: UIImage?
     let titleText: String?

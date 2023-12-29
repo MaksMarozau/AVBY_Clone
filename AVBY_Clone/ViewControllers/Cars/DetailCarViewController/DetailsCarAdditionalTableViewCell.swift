@@ -21,7 +21,7 @@ final class DetailsCarAdditionalTableViewCell: UITableViewCell {
         contentView.addSubview(containerView)
         containerView.addSubviews(views: titleLable, descriptionLable)
         
-        constraintes()
+        setConstraintes()
         configureUI()
     }
     
@@ -34,7 +34,7 @@ final class DetailsCarAdditionalTableViewCell: UITableViewCell {
     
 //MARK: - Constraintes
     
-    private func constraintes() {
+    private func setConstraintes() {
         
         containerView.translatesAutoresizingMaskIntoConstraints = false
         containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true

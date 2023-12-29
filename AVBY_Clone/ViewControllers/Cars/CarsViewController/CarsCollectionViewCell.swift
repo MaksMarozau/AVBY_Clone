@@ -16,7 +16,7 @@ final class CarsCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.addSubview(imageView)
-        constraintes()
+        setConstraintes()
         configUI()
     }
     
@@ -28,7 +28,7 @@ final class CarsCollectionViewCell: UICollectionViewCell {
     
 //MARK: - Constraintes
     
-    private func constraintes() {
+    private func setConstraintes() {
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 0).isActive = true

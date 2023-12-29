@@ -22,7 +22,7 @@ final class DetailCarsEndTableViewCell: UITableViewCell {
         contentView.addSubview(containerView)
         containerView.addSubview(complaineButton)
         
-        constraintes()
+        setConstraintes()
         configureUI()
     }
     
@@ -35,7 +35,7 @@ final class DetailCarsEndTableViewCell: UITableViewCell {
     
 //MARK: - Constraintes
     
-    private func constraintes() {
+    private func setConstraintes() {
         
         containerView.translatesAutoresizingMaskIntoConstraints = false
         containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true

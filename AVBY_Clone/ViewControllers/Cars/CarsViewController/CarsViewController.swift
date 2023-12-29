@@ -30,7 +30,7 @@ final class CarsViewController: UIViewController {
         containerView.addSubviews(views: findeMarkButton, parametresButton)
 
         
-        constraintes()
+        setConstraintes()
         configureUI()
         addTargets()
     }
@@ -50,7 +50,7 @@ final class CarsViewController: UIViewController {
     
 //MARK: - Constraintes
     
-    private func constraintes() {
+    private func setConstraintes() {
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5).isActive = true
@@ -192,7 +192,6 @@ extension CarsViewController: UITableViewDelegate, UITableViewDataSource {
     //Number of rows in a section
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return advertisementsArray.carModels.count
-//        return 20
     }
     
     
@@ -212,7 +211,6 @@ extension CarsViewController: UITableViewDelegate, UITableViewDataSource {
         cell.addContent(addAdvertisement: advertisement)
         cell.appedImageNamesArray(photosNameArray)
         cell.delegate = self
-//        let cell = UITableViewCell()
         return cell
     }
     
@@ -234,8 +232,6 @@ extension CarsViewController: UITableViewDelegate, UITableViewDataSource {
     
     //Tap actions of the selected cell
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "CarsTableViewCell", for: indexPath) as? CarsTableViewCell else { return }
         
         let controller = DetailsCarViewController()
         controller.model = [advertisementsArray.carModels[indexPath.row]]
