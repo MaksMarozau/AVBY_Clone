@@ -1,8 +1,9 @@
 import UIKit
 
-//MARK: - Final class CarsCollectionViewCell
 
-final class CarsCollectionViewCell: UICollectionViewCell {
+//MARK: - Final class DetailsCarCollectionViewCell
+
+final class DetailsCarCollectionViewCell: UICollectionViewCell {
     
     
 //MARK: - Properties
@@ -15,10 +16,13 @@ final class CarsCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         contentView.addSubview(imageView)
+        
         setConstraintes()
         configUI()
     }
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -44,12 +48,14 @@ final class CarsCollectionViewCell: UICollectionViewCell {
     private func configUI() {
         imageView.backgroundColor = .clear
         imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 10
+        imageView.clipsToBounds = true
     }
     
     
     
 //MARK: - Set Image (public method)
-        
+    
     func setImage(_ image: UIImage) {
         imageView.image = image
     }
